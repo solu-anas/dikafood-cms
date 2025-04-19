@@ -1,7 +1,7 @@
 @import '../../../../assets/styles/variables.scss';
 @import '../../../../assets/styles/_mixins.scss';
 
-.login-form-container {
+.signup-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,42 +13,13 @@
   gap: 1rem;
   font-family: 'chillax', sans-serif;
 
-  .login-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-
-    .login-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background-color: rgba(170, 204, 0, 0.15);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      svg {
-        color: $accent-lime;
-      }
-    }
-
-    h2 {
-      font-family: var(--font-heading);
-      font-weight: $font-weight-medium;
-      font-size: 1.5rem;
-      color: rgba(92, 111, 0, 0.8);
-      margin: 0;
-    }
-  }
-
-  .login-form {
+  .signup-form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 
-    .login-error {
+    .signup-error {
       padding: 0.75rem;
       border-radius: $border-radius-round;
       background-color: color('error-light');
@@ -114,7 +85,7 @@
       }
     }
 
-    .login-button {
+    .signup-button {
       margin-top: 0.5rem;
       width: 100%;
       padding: 0.85rem;
@@ -149,7 +120,7 @@
     .auth-links {
       margin-top: 1.5rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       width: 100%;
       
       a {
@@ -175,4 +146,4 @@
       }
     }
   }
-}
+} 

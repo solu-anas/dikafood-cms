@@ -1,4 +1,4 @@
-import { PiArrowLeft, PiArrowRight, PiCheck, PiCheckCircle, PiClipboardText, PiCopy, PiDetective, PiFunnel, PiHash, PiHourglassLow, PiHouse, PiInfo, PiList, PiMapPin, PiPackage, PiPaperclip, PiSticker, PiTilde, PiTruck, PiUser, PiXBold, PiXCircle } from "react-icons/pi";
+import { PiArrowLeft, PiArrowRight, PiCheck, PiCheckCircle, PiClipboardText, PiCopy, PiDetective, PiFunnel, PiHash, PiHourglassLow, PiHouse, PiInfo, PiList, PiMapPin, PiPackage, PiPaperclip, PiSticker, PiMinus } from "react-icons/pi";
 import "./orders.scss";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import TableComp from "../Components/TableComp";
@@ -531,7 +531,7 @@ export default function Orders() {
                                         :
                                         (
                                             theme === "almost" ?
-                                                <span className="almost"><PiTilde size={"16px"} color="var(--dark-green-1)" /></span>
+                                                <span className="almost"><PiMinus size={"16px"} color="var(--dark-green-1)" /></span>
                                                 :
                                                 <span><PiCheck size={"16px"} color="#CCC" /></span>
                                         )

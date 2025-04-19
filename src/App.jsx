@@ -14,6 +14,8 @@ import DashboardLayout from './components/layout/DashboardLayout';
 
 // Import pages
 import LoginPage from './features/auth/pages/LoginPage';
+import SignupPage from './features/auth/pages/SignupPage';
+import ForgotPasswordPage from './features/auth/pages/ForgotPasswordPage';
 import ProductsPage from './features/products/pages/ProductsPage';
 import TestComponents from './pages/TestComponents';
 
@@ -74,6 +76,8 @@ function App() {
           <Routes>
             {/* Public routes */}
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/test-components" element={<TestComponents />} />
 
             {/* Dashboard routes - protected by DashboardLayout */}

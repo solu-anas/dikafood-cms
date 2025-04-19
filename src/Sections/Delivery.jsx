@@ -1,4 +1,4 @@
-import { PiArrowLeft, PiArrowRight, PiCheck, PiCheckCircle, PiCopy, PiHash, PiInfo, PiList, PiPauseCircle, PiPencilSimple, PiPlus, PiSticker, PiTilde, PiTrash, PiTruck } from "react-icons/pi";
+import { PiArrowLeft, PiArrowRight, PiCheck, PiCheckCircle, PiCopy, PiHash, PiInfo, PiList, PiPauseCircle, PiPencilSimple, PiPlus, PiSticker, PiMinus, PiTrash, PiTruck } from "react-icons/pi";
 import "./delivery.scss";
 import { useEffect, useState } from "react";
 import TableComp from '../Components/TableComp';
@@ -277,7 +277,7 @@ export default function Delivery() {
                     :
                     (
                       theme === "almost" ?
-                        <span className="almost"><PiTilde size={"16px"} color="var(--dark-green-1)" /></span>
+                        <span className="almost"><PiMinus size={"16px"} color="var(--dark-green-1)" /></span>
                         :
                         <span><PiCheck size={"16px"} color="#CCC" /></span>
                     )

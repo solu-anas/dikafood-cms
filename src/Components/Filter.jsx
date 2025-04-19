@@ -1,4 +1,4 @@
-import { PiCheck, PiTilde } from "react-icons/pi";
+import { PiCheck, PiMinus } from "react-icons/pi";
 import "./filter.scss";
 import ToggleButton from "./ToggleButton.jsx";
 import { useEffect, useState } from "react";
@@ -27,7 +27,7 @@ export default function Filter({ options, isOn, onToggle, checked, onCheck, onSe
                         <div className={theme}>
                             {
                                 theme === "almost" ?
-                                    <PiTilde size={"12px"} color="var(--dark-green-1)" />
+                                    <PiMinus size={"12px"} color="var(--dark-green-1)" />
                                     :
                                     <PiCheck
                                         size={"12px"}

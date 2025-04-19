@@ -1,4 +1,4 @@
-import { PiArrowLeft, PiArrowRight, PiChatText, PiCheck, PiCheckCircle, PiClipboardText, PiCopy, PiHash, PiImage, PiList, PiPauseCircle, PiPencilSimple, PiPlus, PiStar, PiSticker, PiTilde, PiTrash } from "react-icons/pi";
+import { PiArrowLeft, PiArrowRight, PiChatText, PiCheck, PiCheckCircle, PiClipboardText, PiCopy, PiHash, PiImage, PiList, PiPauseCircle, PiPencilSimple, PiPlus, PiStar, PiSticker, PiMinus, PiTrash } from "react-icons/pi";
 import "./products.scss";
 import BurgerOptions from "../Components/BurgerOptions";
 import { useEffect, useState } from "react";
@@ -390,7 +390,7 @@ export default function Products() {
                                         :
                                         (
                                             theme === "almost" ?
-                                                <span className="almost"><PiTilde size={"16px"} color="var(--dark-green-1)" /></span>
+                                                <span className="almost"><PiMinus size={"16px"} color="var(--dark-green-1)" /></span>
                                                 :
                                                 <span><PiCheck size={"16px"} color="#CCC" /></span>
                                         )

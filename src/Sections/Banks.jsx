@@ -1,4 +1,4 @@
-import { PiArrowLeft, PiArrowRight, PiCheck, PiCheckCircle, PiClipboardText, PiCopy, PiHash, PiInfo, PiList, PiPauseCircle, PiPencilSimple, PiPlus, PiQrCode, PiSticker, PiTilde, PiTrash } from "react-icons/pi";
+import { PiArrowLeft, PiArrowRight, PiCheck, PiCheckCircle, PiClipboardText, PiCopy, PiHash, PiInfo, PiList, PiPauseCircle, PiPencilSimple, PiPlus, PiQrCode, PiSticker, PiMinus, PiTrash } from "react-icons/pi";
 import "./banks.scss";
 import { useEffect, useState } from "react";
 import TableComp from "../Components/TableComp";
@@ -275,7 +275,7 @@ export default function Banks() {
                                         :
                                         (
                                             theme === "almost" ?
-                                                <span className="almost"><PiTilde size={"16px"} color="var(--dark-green-1)" /></span>
+                                                <span className="almost"><PiMinus size={"16px"} color="var(--dark-green-1)" /></span>
                                                 :
                                                 <span><PiCheck size={"16px"} color="#CCC" /></span>
                                         )

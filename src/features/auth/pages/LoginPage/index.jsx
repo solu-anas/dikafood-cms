@@ -53,12 +53,11 @@ const LoginPage = () => {
   if (loginVisible) {
     return (
       <div className="login-page">
-        <div className="login-overlay login-overlay-1"></div>
-        <div className="login-overlay login-overlay-2"></div>
         <div className="login-container">
           <div className="login-header">
-            <img src="/images/logo.png" alt="DikaFood logo" className="login-logo" />
-            <h1>Manager Dashboard</h1>
+            <img src="/src/assets/dikafood-logo-main-3.svg" alt="DikaFood logo" className="login-logo" />
+            <h1>Welcome to DikaFood Management</h1>
+            <p className="login-subtext">Please enter your credentials to access the platform</p>
           </div>
           <LoginForm onSubmit={handleLogin} error={error} />
         </div>

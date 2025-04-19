@@ -1,4 +1,4 @@
-import { PiArrowLeft, PiArrowRight, PiArrowSquareOut, PiChatText, PiCheck, PiCheckCircle, PiCopy, PiHash, PiList, PiPauseCircle, PiStarFill, PiSticker, PiTilde, PiUser } from "react-icons/pi"
+import { PiArrowLeft, PiArrowRight, PiArrowSquareOut, PiChatText, PiCheck, PiCheckCircle, PiCopy, PiHash, PiList, PiPauseCircle, PiStarFill, PiSticker, PiMinus, PiUser } from "react-icons/pi"
 import "./reviews.scss"
 import { useCallback, useEffect, useState } from "react";
 import TableComp from "../Components/TableComp";
@@ -267,7 +267,7 @@ export default function Reviews() {
                                         :
                                         (
                                             theme === "almost" ?
-                                                <span className="almost"><PiTilde size={"16px"} color="var(--dark-green-1)" /></span>
+                                                <span className="almost"><PiMinus size={"16px"} color="var(--dark-green-1)" /></span>
                                                 :
                                                 <span><PiCheck size={"16px"} color="#CCC" /></span>
                                         )

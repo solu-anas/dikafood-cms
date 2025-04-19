@@ -1,4 +1,4 @@
-import { PiArrowLeft, PiArrowRight, PiChatText, PiXCircle, PiCheck, PiCheckCircle, PiClipboardText, PiHash, PiList, PiPauseCircle, PiPlus, PiSticker, PiUserList, PiTilde } from 'react-icons/pi'
+import { PiArrowLeft, PiArrowRight, PiChatText, PiXCircle, PiCheck, PiCheckCircle, PiClipboardText, PiHash, PiList, PiPauseCircle, PiPlus, PiSticker, PiUserList, PiMinus } from 'react-icons/pi'
 import './customers.scss'
 import { useEffect, useState } from 'react';
 import TableComp from '../Components/TableComp';
@@ -290,7 +290,7 @@ export default function Customers() {
                                         :
                                         (
                                             theme === "almost" ?
-                                                <span className="almost"><PiTilde size={"16px"} color="var(--dark-green-1)" /></span>
+                                                <span className="almost"><PiMinus size={"16px"} color="var(--dark-green-1)" /></span>
                                                 :
                                                 <span><PiCheck size={"16px"} color="#CCC" /></span>
                                         )

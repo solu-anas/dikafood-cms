@@ -1,28 +1,57 @@
-@import '../../../assets/styles/index.scss';
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/styles/_mixins.scss';
 
 .password-input-container {
   position: relative;
   width: 100%;
+  font-family: 'chillax', sans-serif;
+
+  .input-with-icon {
+    position: relative;
+    width: 100%;
+
+    svg:first-child {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text-muted;
+      z-index: 1;
+      
+      &:hover {
+        color: $accent-lime;
+      }
+    }
+  }
 
   .password-input {
     width: 100%;
     padding: 0.75rem;
+    padding-left: 2.5rem;
     padding-right: 2.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-round;
     font-size: 1rem;
     line-height: 1.5;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-weight: $font-weight-regular;
+    transition: all 0.2s ease;
+    font-family: 'chillax', sans-serif;
+    color: #888888;
 
     &:focus {
       outline: none;
-      border-color: color('dark-green-3');
-      box-shadow: 0 0 0 3px rgba(15, 138, 56, 0.1);
+      border-color: $accent-lime;
+      box-shadow: 0 0 0 3px rgba(170, 204, 0, 0.2);
+      
+      & ~ svg {
+        color: $accent-lime;
+      }
     }
 
     &::placeholder {
-      color: color('text-muted');
+      color: #aaaaaa;
       opacity: 0.8;
+      font-weight: $font-weight-regular;
     }
   }
 
@@ -37,11 +66,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: color('text-muted');
+    color: #aaaaaa;
     cursor: pointer;
 
     &:hover {
-      color: color('dark-green-3');
+      color: #666666;
     }
 
     &:focus {
