@@ -1,0 +1,97 @@
+.upload-image{
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid var(--dark-grey);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    >.img{
+        position: relative;
+        height: 100%;
+        width: 48px;
+        border-radius: 8px 0px 0px 8px;
+        box-shadow: 1px 0px 0px 0px var(--light-grey-2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >img{
+            height: 100%;
+            width: 100%;
+            border-radius: 8px 0px 0px 8px;
+            object-fit: contain;
+        }
+        >span{
+            position: absolute;
+            border-radius: 4px;
+            width: 24px;
+            height: 24px;
+            background-color: #ffffffcc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+        }
+    }
+    >.title{
+        width: 100%;
+        padding-left: 8px;
+        padding-right: 8px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        >p{
+            width: 100%;
+            text-align: left;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            line-height: 150%;
+            color: var(--dark-grey);
+            font-family: "Raleway";
+            font-weight: 500;
+        }
+        >button{
+            position: relative;
+            height: 32px;
+            width: fit-content;
+            min-width: fit-content;
+            padding: 2px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            border-radius: 8px;
+            background-color: var(--light-grey);
+            color: var(--dark-grey);
+            font-size: 14px;
+            font-family: "Raleway";
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            line-height: 120%;
+            border: none;
+            cursor: pointer;
+            >input{
+                position: absolute;
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                opacity: 0;
+                z-index: 1;
+            }
+            >span{
+                color: var(--dark-grey);
+                height: 16px;
+            }
+        }
+    }
+    &:hover{
+        >.img{
+            >span{
+                opacity: 1;
+            }
+        }
+    }
+}

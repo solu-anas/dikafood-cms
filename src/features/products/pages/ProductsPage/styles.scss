@@ -1,0 +1,79 @@
+@import '../../../../assets/styles/index.scss';
+
+.products-page {
+  @include flex-column(1.5rem);
+
+  .page-header {
+    @include flex-row(1rem, space-between, center);
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: color('text-primary');
+      font-family: var(--font-heading);
+      margin: 0;
+    }
+  }
+
+  .page-content {
+    @include flex-column(1.5rem);
+  }
+
+  .card {
+    @include card;
+
+    .card-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid color('border-color');
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: color('text-primary');
+        font-family: var(--font-heading);
+        margin: 0;
+      }
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+  }
+
+  .empty-state {
+    @include flex-column(1rem, center, center);
+    padding: 3rem 0;
+    text-align: center;
+
+    p {
+      color: color('text-muted');
+      margin-bottom: 1rem;
+    }
+  }
+
+  .table-container {
+    overflow-x: auto;
+    width: 100%;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th, td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid color('border-color');
+      }
+
+      th {
+        font-weight: 600;
+        color: color('text-primary');
+        background-color: color('light-green-1');
+      }
+
+      tr:hover {
+        background-color: rgba(color('light-green-1'), 0.5);
+      }
+    }
+  }
+}

@@ -1,0 +1,415 @@
+.accordion {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid var(--light-grey-2);
+
+    >.accordion-header {
+        width: 100%;
+        height: 48px;
+        padding: 0px 0px 0px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .name {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+
+            >span {
+                cursor: pointer;
+                width: 32px;
+                min-width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                background-color: var(--light-grey);
+                color: var(--dark-grey);
+
+                >span {
+                    width: 16px;
+                    height: 16px;
+                    transform: rotate(-90deg);
+                    transition: 0.3s ease-in-out;
+
+                    &.active {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+
+            >p {
+                font-size: 14px;
+                font-family: "Raleway";
+                font-weight: 500;
+                letter-spacing: 0.2px;
+                line-height: 150%;
+                color: #666;
+            }
+        }
+
+        >.icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+
+            >span {
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--light-grey);
+                border-radius: 8px;
+                color: var(--dark-grey);
+                cursor: pointer;
+
+            }
+
+            >.arrows {
+                display: flex;
+                flex-direction: column;
+                border-left: 1px solid var(--light-grey-2);
+
+                >span {
+                    width: 48px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: 0.3s ease-in-out;
+
+                    &:first-child {
+                        border-bottom: 1px solid var(--light-grey-2);
+                        border-radius: 0px 8px 0px 0px;
+                    }
+
+                    &:last-child {
+                        border-radius: 0px 0px 8px 0px;
+                    }
+
+                    &:hover {
+                        background-color: var(--light-grey);
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .icons {
+                opacity: 1;
+            }
+        }
+
+    }
+
+    >.accordion-content {
+        border-top: 1px solid var(--light-grey-2);
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        >.options-container {
+            display: flex;
+            flex-direction: column;
+
+            >.option {
+                width: 100%;
+                height: 48px;
+                display: flex;
+                border-radius: 8px;
+                border: 1px solid var(--light-grey-2);
+
+                >.value {
+                    width: 100%;
+                    padding-left: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    font-size: 14px;
+                    font-family: "Raleway";
+                    font-weight: 500;
+                    letter-spacing: 0.2px;
+                    line-height: 150%;
+                    color: #666;
+                }
+
+                >.delete {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0px 8px;
+                    gap: 8px;
+                    height: 100%;
+                    opacity: 0;
+                    transition: 0.3s ease-in-out;
+
+                    >span {
+                        width: 32px;
+                        height: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: var(--light-grey);
+                        border-radius: 8px;
+                        color: var(--dark-grey);
+                        cursor: pointer;
+                    }
+                }
+
+                >.arrows {
+                    opacity: 0;
+                    transition: 0.3s ease-in-out;
+                    display: flex;
+                    flex-direction: column;
+                    border-left: 1px solid var(--light-grey-2);
+
+                    >span {
+                        width: 48px;
+                        height: 24px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: 0.3s ease-in-out;
+
+                        &:first-child {
+                            border-bottom: 1px solid var(--light-grey-2);
+                            border-radius: 0px 8px 0px 0px;
+                        }
+
+                        &:last-child {
+                            border-radius: 0px 0px 8px 0px;
+                        }
+
+                        &:hover {
+                            background-color: var(--light-grey);
+                        }
+                    }
+                }
+
+                &:hover {
+                    >.delete {
+                        opacity: 1;
+                    }
+
+                    >.arrows {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            >.gap {
+                width: 100%;
+                height: 18px;
+                background-color: var(--light-green-1);
+                display: flex;
+                align-items: center;
+                position: relative;
+                padding: 4px 0px;
+                cursor: pointer;
+                opacity: 0;
+                transition: 0.3s ease-in-out;
+
+                >.line {
+                    width: 100%;
+                    height: 1px;
+                    background-color: var(--dark-green-1);
+                }
+
+                >span {
+                    cursor: pointer;
+                    position: absolute;
+                    top: -3%;
+                    left: 45%;
+                    transform: translate(50%, 50%);
+                    width: 26px;
+                    height: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: var(--light-green-1);
+                    color: var(--dark-green-2);
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &.active {
+                    opacity: 1;
+                }
+            }
+
+            >.new-option {
+                width: 100%;
+                height: 48px;
+                display: flex;
+                border-radius: 8px;
+
+                >.value {
+                    border: 1px solid var(--light-grey-2);
+                    width: 100%;
+                    padding-left: 16px;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    >input {
+                        width: 100%;
+                        border: none;
+                        outline: none;
+                        font-size: 14px;
+                        color: #666;
+                        letter-spacing: 0.2px;
+                        line-height: 150%;
+                        font-family: "Raleway";
+                        font-weight: 500;
+                    }
+
+                    >.spans {
+                        display: flex;
+                        gap: 8px;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+                        width: fit-content;
+                        padding: 8px;
+
+                        >span {
+                            height: 32px;
+                            width: 32px;
+                            min-width: 32px;
+                            border-radius: 8px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+
+                            &.check {
+                                color: var(--dark-green-1);
+                                background-color: var(--light-green-1);
+                            }
+
+                            &.cancel {
+                                color: var(--dark-grey);
+                                background-color: var(--light-grey);
+                            }
+                        }
+                    }
+
+                    &:focus-within {
+                        border: 1px solid var(--dark-green-1);
+                        box-shadow: 0px 0px 0px 4px var(--light-green-1);
+                    }
+                }
+            }
+        }
+
+        >.new-option {
+            width: 100%;
+            height: 48px;
+            display: flex;
+            border-radius: 8px;
+
+            >.value {
+                border: 1px solid var(--light-grey-2);
+                width: 100%;
+                padding-left: 16px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                >input {
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    font-size: 14px;
+                    color: #666;
+                    letter-spacing: 0.2px;
+                    line-height: 150%;
+                    font-family: "Raleway";
+                    font-weight: 500;
+                }
+
+                >.spans {
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    width: fit-content;
+                    padding: 8px;
+
+                    >span {
+                        height: 32px;
+                        width: 32px;
+                        min-width: 32px;
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+
+                        &.check {
+                            color: var(--dark-green-1);
+                            background-color: var(--light-green-1);
+                        }
+
+                        &.cancel {
+                            color: var(--dark-grey);
+                            background-color: var(--light-grey);
+                        }
+                    }
+                }
+
+                &:focus-within {
+                    border: 1px solid var(--dark-green-1);
+                    box-shadow: 0px 0px 0px 4px var(--light-green-1);
+                }
+            }
+        }
+
+        >.button {
+            position: relative;
+            width: 100%;
+            padding: 0 18px;
+            height: 48px;
+            display: flex;
+            gap: 4px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 1px solid var(--dark-green-1);
+            font-size: 16px;
+            font-family: "Raleway";
+            font-weight: 600;
+            color: var(--dark-green-2);
+            letter-spacing: 0.2px;
+            line-height: 150%;
+
+            >span {
+                width: 16px;
+                height: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--dark-green-2);
+            }
+        }
+    }
+}

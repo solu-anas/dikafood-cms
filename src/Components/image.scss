@@ -1,0 +1,175 @@
+.image {
+    display: flex;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid var(--light-grey-2);
+    align-items: center;
+
+    >.img-prod {
+        height: 48px;
+        width: 48px;
+        min-width: 48px;
+        border-radius: 8px 0px 0px 8px;
+        position: relative;
+        border-right: 1px solid var(--light-grey-2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        >img {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            border-radius: 8px 0px 0px 8px;
+            top: 0px;
+            left: 0;
+        }
+
+        >span {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            background-color: #ffffffcc;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+        }
+    }
+
+    >.prod-name {
+        width: 100%;
+        padding-left: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        >p {
+            font-size: 14px;
+            font-family: "Raleway";
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            line-height: 150%;
+            color: #666;
+        }
+    }
+
+    >.actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 8px;
+        gap: 8px;
+        height: 100%;
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+        border-right: 1px solid var(--light-grey-2);
+
+        >span {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-grey);
+            border-radius: 8px;
+            color: var(--dark-grey);
+            cursor: pointer;
+        }
+    }
+
+    >.star {
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 8px;
+        height: 100%;
+
+        >span {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border-radius: 8px;
+            color: var(--dark-green-1);
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--light-green-1);
+            }
+        }
+        &.active{
+            opacity: 1;
+            >span{
+                cursor: default;
+                &:hover{
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
+    >.arrows {
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid var(--light-grey-2);
+
+        >span {
+            width: 48px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+
+            &:first-child {
+                border-bottom: 1px solid var(--light-grey-2);
+                border-radius: 0px 8px 0px 0px;
+            }
+
+            &:last-child {
+                border-radius: 0px 0px 8px 0px;
+            }
+
+            &:hover {
+                background-color: var(--light-grey);
+            }
+        }
+        &.active{
+            opacity: 1;
+        }
+    }
+
+    &:hover {
+        >.img-prod{
+            >span{
+                opacity: 1;
+            }
+        }
+        >.actions {
+            opacity: 1;
+        }
+
+        >.star {
+            opacity: 1;
+        }
+
+        >.arrows {
+            opacity: 1;
+        }
+    }
+}

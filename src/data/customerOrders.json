@@ -1,0 +1,118 @@
+[
+    {
+        "serialNumber" : 1,
+        "status" : "packed",
+        "paymentStatus" : "paid",
+        "properties" : [
+            {
+                "property" : "Ordered Products",
+                "value" : "5"
+            },
+            {
+                "property" : "Ordered Units",
+                "value" : "$24"
+            },
+            {
+                "property" : "Total Price",
+                "value" : "$120"
+            }
+        ],
+        "details" : [
+            {
+                "property" : "Order at",
+                "value" : "Oct 21, 2024"
+            },
+            {
+                "property" : "Estimated Delivery",
+                "value" : "3 to 5 days"
+            }
+        ]
+    },
+    {
+        "serialNumber" : 2,
+        "status" : "in transit",
+        "paymentStatus" : "unpaid",
+        "properties" : [
+            {
+                "property" : "Ordered Products",
+                "value" : "5"
+            },
+            {
+                "property" : "Ordered Units",
+                "value" : "$24"
+            },
+            {
+                "property" : "Total Price",
+                "value" : "$120"
+            }
+        ],
+        "details" : [
+            {
+                "property" : "Order at",
+                "value" : "Oct 21, 2024"
+            },
+            {
+                "property" : "Estimated Delivery",
+                "value" : "3 to 5 days"
+            }
+        ]
+    },
+    {
+        "serialNumber" : 3,
+        "status" : "Ordered",
+        "paymentStatus" : "paid",
+        "properties" : [
+            {
+                "property" : "Ordered Products",
+                "value" : "5"
+            },
+            {
+                "property" : "Ordered Units",
+                "value" : "$24"
+            },
+            {
+                "property" : "Total Price",
+                "value" : "$120"
+            }
+        ],
+        "details" : [
+            {
+                "property" : "Order at",
+                "value" : "Oct 21, 2024"
+            },
+            {
+                "property" : "Estimated Delivery",
+                "value" : "3 to 5 days"
+            }
+        ]
+    },
+    {
+        "serialNumber" : 4,
+        "status" : "Delivred",
+        "paymentStatus" : "pending",
+        "properties" : [
+            {
+                "property" : "Ordered Products",
+                "value" : "5"
+            },
+            {
+                "property" : "Ordered Units",
+                "value" : "$24"
+            },
+            {
+                "property" : "Total Price",
+                "value" : "$120"
+            }
+        ],
+        "details" : [
+            {
+                "property" : "Order at",
+                "value" : "Oct 21, 2024"
+            },
+            {
+                "property" : "Estimated Delivery",
+                "value" : "3 to 5 days"
+            }
+        ]
+    }
+]

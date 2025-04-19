@@ -1,0 +1,121 @@
+.accordion {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid var(--light-grey-2);
+
+    >.accordion-header {
+        width: 100%;
+        height: 48px;
+        padding: 0px 0px 0px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .name {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+
+            >span {
+                cursor: pointer;
+                width: 32px;
+                min-width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                background-color: var(--light-grey);
+                color: var(--dark-grey);
+
+                >span {
+                    width: 16px;
+                    height: 16px;
+                    transform: rotate(-90deg);
+                    transition: 0.3s ease-in-out;
+
+                    &.active {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+
+            >p {
+                font-size: 14px;
+                font-family: "Raleway";
+                font-weight: 500;
+                letter-spacing: 0.2px;
+                line-height: 150%;
+                color: #666;
+            }
+        }
+
+        >.icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+
+            >span {
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--light-grey);
+                border-radius: 8px;
+                color: var(--dark-grey);
+                cursor: pointer;
+            }
+
+            >.arrows {
+                display: flex;
+                flex-direction: column;
+                border-left: 1px solid var(--light-grey-2);
+
+                >span {
+                    width: 48px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: 0.3s ease-in-out;
+
+                    &:first-child {
+                        border-bottom: 1px solid var(--light-grey-2);
+                        border-radius: 0px 8px 0px 0px;
+                    }
+
+                    &:last-child {
+                        border-radius: 0px 0px 8px 0px;
+                    }
+
+                    &:hover {
+                        background-color: var(--light-grey);
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .icons {
+                opacity: 1;
+            }
+        }
+    }
+
+    >.accordion-content {
+        border-top: 1px solid var(--light-grey-2);
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}

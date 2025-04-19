@@ -1,0 +1,243 @@
+@use "sass:map";
+
+// ==========================================================================
+// Responsive Design
+// ==========================================================================
+
+// Breakpoints map
+$breakpoints: (
+  'mobile-sm': 375px,
+  'mobile': 480px,
+  'tablet': 768px,
+  'laptop': 1024px,
+  'desktop': 1440px
+);
+
+// Media query mixin for min-width (mobile-first approach)
+@mixin media-min($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media screen and (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+// Media query mixin for max-width (desktop-first approach)
+@mixin media-max($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media screen and (max-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+// Shorthand mixins for common breakpoints
+@mixin mobile {
+  @include media-max('mobile') {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include media-max('tablet') {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @include media-max('laptop') {
+    @content;
+  }
+}
+
+// ==========================================================================
+// Layout Helpers
+// ==========================================================================
+
+// Container with max-width and center alignment
+@mixin container($max-width: 1200px, $padding: 20px) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+// Flexbox row with gap
+@mixin flex-row($gap: 16px, $justify: flex-start, $align: center) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Flexbox column with gap
+@mixin flex-column($gap: 16px, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Grid layout with responsive columns
+@mixin grid-columns($columns: 3, $gap: 20px) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat($columns, 1fr);
+
+  @include tablet {
+    grid-template-columns: repeat(min($columns, 2), 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ==========================================================================
+// Visual Effects
+// ==========================================================================
+
+// Glass effect mixin for UI elements
+@mixin glass-effect($bg-color: rgba(255, 255, 255, 0.2), $blur: 10px, $border-color: rgba(255, 255, 255, 0.1)) {
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  background-color: $bg-color;
+  border: 1px solid $border-color;
+}
+
+// Hover lift effect - subtle elevation on hover
+@mixin hover-lift($distance: -5px, $transition: 0.3s, $shadow: true) {
+  transition: transform $transition, box-shadow $transition;
+
+  &:hover {
+    transform: translateY($distance);
+    @if $shadow {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// Card styles
+@mixin card($padding: 20px, $border-radius: 8px, $shadow: true) {
+  padding: $padding;
+  border-radius: $border-radius;
+  background-color: white;
+
+  @if $shadow {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  } @else {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Truncate text with ellipsis
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+// Text styles
+@mixin text-style($size, $weight: 400, $line-height: 1.5, $letter-spacing: normal) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+// Heading styles with responsive sizing
+@mixin heading($desktop-size, $mobile-size: $desktop-size * 0.7, $weight: 600, $line-height: 1.2) {
+  font-size: $desktop-size;
+  font-weight: $weight;
+  line-height: $line-height;
+
+  @include mobile {
+    font-size: $mobile-size;
+  }
+}
+
+// ==========================================================================
+// Interactive Elements
+// ==========================================================================
+
+// Button base styles
+@mixin button-base($padding-y: 0.75rem, $padding-x: 1.5rem, $border-radius: 8px) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: $padding-y $padding-x;
+  border-radius: $border-radius;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Form control base styles
+@mixin form-control($padding: 0.75rem, $border-radius: 8px) {
+  width: 100%;
+  padding: $padding;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: $border-radius;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// ==========================================================================
+// Animation Helpers
+// ==========================================================================
+
+// Fade-in animation
+@mixin fade-in($duration: 0.3s, $delay: 0s) {
+  animation: fadeIn $duration ease $delay forwards;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+// Fade-in-up animation
+@mixin fade-in-up($duration: 0.5s, $delay: 0s, $distance: 20px) {
+  animation: fadeInUp $duration ease $delay forwards;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY($distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

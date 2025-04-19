@@ -1,0 +1,131 @@
+.alert {
+    position: absolute;
+    width: 204px;
+    padding: 4px;
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0px 0px 8px 0px #0000001a;
+    border-radius: 8px;
+    top: 50px;
+    left: 85%;
+
+    >.item {
+        display: flex;
+        height: 32px;
+        padding: 2px 8px;
+        gap: 4px;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 4px;
+        transition: 0.3s ease-in-out;
+        border-bottom: 1px solid transparent;
+        cursor: pointer;
+
+        >span {
+            width: 16px;
+            height: 16px;
+        }
+
+        >p {
+            font-size: 12px;
+            letter-spacing: 0.2px;
+            color: var(--dark-grey);
+            font-weight: 400;
+        }
+
+        &:hover {
+            background-color: var(--light-grey);
+        }
+
+        &.delete{
+            >p{
+                color: var(--red);
+            }
+            >span{
+                color: var(--red);
+            }
+            &:hover{
+                background-color: var(--light-red);
+            }
+        }
+        &.active{
+            >p{
+                color: var(--dark-green-1);
+            }
+            >span{
+                color: var(--dark-green-1);
+            }
+            &:hover{
+                background-color: var(--light-green-1);
+            }
+        }
+        &.suspend{
+            >p{
+                color: var(--orange);
+            }
+            >span{
+                color: var(--orange);
+            }
+            &:hover{
+                background-color: var(--light-orange);
+            }
+        }
+    }
+
+    >.confirmation {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        >p {
+            font-size: 14px;
+            color: var(--dark-grey);
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            text-align: left;
+        }
+
+        >.buttons {
+            width: 100%;
+            display: flex;
+            gap: 8px;
+
+            >button {
+                height: 32px;
+                border-radius: 8px;
+                padding: 2px 12px;
+                display: flex;
+                gap: 4px;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                background-color: transparent;
+                width: 50%;
+
+                >span {
+                    height: 16px;
+                }
+
+                &.confirm {
+                    color: var(--dark-green-1);
+                    background-color: var(--light-green-1);
+                }
+
+                &.cancel {
+                    color: var(--dark-grey);
+                    background-color: var(--light-grey);
+                }
+            }
+        }
+
+    }
+
+    &.active {
+        width: 232px;
+
+        >.item {
+            border-bottom: 1px solid var(--light-grey);
+        }
+    }
+}

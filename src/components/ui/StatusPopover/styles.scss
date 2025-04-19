@@ -1,0 +1,81 @@
+.list-status {
+    position: absolute;
+    display: flex;
+    width: 151px;
+    background-color: white;
+    z-index: 1;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px 1px #0000001a;
+    padding: 4px;
+    top: 50px;
+    left: 86%;
+
+    >ul {
+        border-radius: 4px;
+        width: 100%;
+
+        >li {
+            display: flex;
+            height: 32px;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            letter-spacing: 0.2px;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+
+            >span {
+                width: 32px;
+                min-width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                >.radio {
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid var(--light-grey-2);
+                    background-color: transparent;
+
+                    >div {
+                        border-radius: 50%;
+                        width: 8px;
+                        height: 8px;
+                        background-color: var(--light-grey);
+                        transition: 0.3s ease-in-out;
+                    }
+
+                    &.active {
+                        >div {
+                            background-color: var(--dark-green-1);
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: var(--light-grey);
+
+                >span {
+                    >.radio {
+                        >div {
+                            background-color: white;
+                        }
+
+                        &.active {
+                            >div {
+                                background-color: var(--dark-green-1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

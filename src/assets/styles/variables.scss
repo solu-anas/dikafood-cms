@@ -1,0 +1,137 @@
+// Color variables
+$colors: (
+  // Green shades
+  'dark-green-1': #0A5C25,
+  'dark-green-2': #0D732F,
+  'dark-green-3': #0F8A38,
+  'dark-green-4': #12A141,
+  'dark-green-5': #006622,
+  'dark-green-6': #226600,
+  'dark-green-7': #08451C,
+  'dark-green-8': #339900,
+  'logo-green': #0A5C26,  // From logo SVG
+
+  'light-green-1': #E8FCEF,
+  'light-green-2': #D1FADF,
+  'light-green-3': #BAF7CF,
+  'light-green-4': #A3F5BE,
+  'light-green-5': #DDFFCC,
+  'light-green-6': #E2F0DB,
+
+  // Purple shades
+  'dark-purple-1': #410A5C,
+  'dark-purple-2': #520D73,
+  'dark-purple-3': #610F8A,
+  'dark-purple-4': #7112A1,
+  'dark-purple-5': #440066,
+
+  'light-purple-1': #F6E8FC,
+  'light-purple-2': #ECD1FA,
+  'light-purple-3': #E3BAF7,
+  'light-purple-4': #DAA3F5,
+  'light-purple-5': #F6E5FF,
+  'light-purple-6': #FBF5FF,
+
+  // Yellow shades
+  'dark-yellow-1': #EBEB47,
+  'logo-lime': #AACC00,  // From logo SVG - lime green
+
+  'light-yellow-1': #FCFCE8,
+  'light-yellow-2': #FAFAD1,
+  'light-yellow-3': #F9F9D2,
+  'light-yellow-4': #F5F5A3,
+
+  // Error colors
+  'error': #DC2626,
+  'error-light': #FEE2E2,
+  'error-dark': #B91C1C,
+
+  // Success colors
+  'success': #4caf50,
+  'success-light': #c8e6c9,
+  'success-lighter': #e6f4ea,
+  'success-dark': #388e3c,
+
+  // Other colors
+  'orange': #E5801A,
+  'accent-lime': #AACC00,  // Adding the lime green as an accent color
+  'text-primary': #1C1C1C,
+  'text-muted': #6e6e6e,
+  'border-color': #e0e0e0
+);
+
+// Access colors with color function
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+// Theme variables - can be reused across components
+$primary-color: color('dark-green-3');
+$secondary-color: color('dark-purple-1');
+$accent-color: color('orange');
+$accent-lime: color('logo-lime');  // Adding the lime accent color
+$logo-green: color('logo-green');  // Adding the logo green
+$text-color: color('text-primary');
+$text-muted: color('text-muted');
+$border-color: color('border-color');
+$background-color: #ffffff;
+
+// Layout variables
+$section-max-width: 1440px;
+$section-padding: 80px;
+$section-padding-mobile: 20px;
+$navbar-height: 96px;
+$navbar-height-mobile: 80px;
+$navbar-padding: 24px;
+$navbar-padding-mobile: 16px;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-round: 9999px;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+
+// Z-index layers
+$z-index: (
+  'base': 1,
+  'dropdown': 10,
+  'sticky': 20,
+  'fixed': 30,
+  'modal': 40,
+  'popover': 50,
+  'tooltip': 60,
+  'toast': 70
+);
+
+// Font sizes
+$font-sizes: (
+  'xs': 0.75rem,    // 12px
+  'sm': 0.875rem,   // 14px
+  'base': 1rem,     // 16px
+  'lg': 1.125rem,   // 18px
+  'xl': 1.25rem,    // 20px
+  '2xl': 1.5rem,    // 24px
+  '3xl': 1.875rem,  // 30px
+  '4xl': 2.25rem,   // 36px
+  '5xl': 3rem,      // 48px
+  '6xl': 3.75rem    // 60px
+);
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+$transition-bezier: cubic-bezier(0.34, 1.56, 0.64, 1);

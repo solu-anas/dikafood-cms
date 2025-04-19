@@ -1,0 +1,99 @@
+@import '../../../assets/styles/index.scss';
+
+.sidebar {
+  width: 260px;
+  background-color: white;
+  border-right: 1px solid color('border-color');
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  @include media-max('tablet') {
+    width: 80px;
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid color('border-color');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include media-max('tablet') {
+      padding: 1rem 0.5rem;
+    }
+
+    .sidebar-logo {
+      height: 40px;
+
+      @include media-max('tablet') {
+        height: 30px;
+      }
+    }
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    padding: 1.5rem 0;
+    overflow-y: auto;
+
+    @include media-max('tablet') {
+      padding: 1rem 0;
+    }
+
+    .nav-list {
+      @include flex-column(0.5rem);
+    }
+
+    .nav-item {
+      width: 100%;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      color: color('text-primary');
+      border-radius: 0;
+      transition: all 0.2s ease;
+
+      @include media-max('tablet') {
+        padding: 0.75rem;
+        justify-content: center;
+      }
+
+      &:hover {
+        background-color: color('light-green-1');
+        color: color('dark-green-3');
+      }
+
+      &.active {
+        background-color: color('light-green-1');
+        color: color('dark-green-3');
+        border-right: 3px solid color('dark-green-3');
+        font-weight: 600;
+      }
+    }
+
+    .nav-icon {
+      margin-right: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include media-max('tablet') {
+        margin-right: 0;
+      }
+    }
+
+    .nav-label {
+      @include media-max('tablet') {
+        display: none;
+      }
+    }
+  }
+}

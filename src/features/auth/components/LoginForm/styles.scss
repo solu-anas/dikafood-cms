@@ -1,0 +1,61 @@
+@import '../../../../assets/styles/index.scss';
+
+.login-form-container {
+  @include flex-column(1.5rem, flex-start, stretch);
+  padding: 2rem;
+
+  .login-title {
+    @include flex-row(0.5rem, flex-start, center);
+
+    .login-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: color('light-green-1');
+      @include flex-row(0, center, center);
+
+      svg {
+        color: color('dark-green-3');
+      }
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: color('dark-green-3');
+      margin: 0;
+    }
+  }
+
+  .login-form {
+    @include flex-column(1.25rem);
+    width: 100%;
+
+    .login-error {
+      padding: 0.75rem;
+      border-radius: $border-radius;
+      background-color: color('error-light');
+      color: color('error-dark');
+      font-size: 0.875rem;
+    }
+
+    .form-group {
+      @include flex-column(0.5rem, flex-start, stretch);
+
+      .form-control {
+        @include form-control;
+
+        &:focus {
+          border-color: color('dark-green-3');
+          box-shadow: 0 0 0 3px rgba(15, 138, 56, 0.1);
+        }
+      }
+    }
+
+    .login-button {
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+  }
+}

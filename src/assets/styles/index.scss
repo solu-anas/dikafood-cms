@@ -1,0 +1,38 @@
+// Main style entry point for the application
+// This file imports and re-exports all global styles, variables, and mixins
+
+// Import variables and mixins
+@forward 'variables';
+@forward 'mixins';
+
+// Import reset styles
+@use '../../reset.scss';
+@use '../../global.scss';
+
+// Global style rules that should apply to the entire application
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Focus styles for keyboard navigation
+*:focus-visible {
+  outline: 2px solid var(--color-primary-600);
+  outline-offset: 2px;
+}

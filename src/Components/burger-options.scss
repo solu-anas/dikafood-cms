@@ -1,0 +1,67 @@
+.burger-options {
+    width: 140px;
+  >.option {
+      display: flex;
+      height: 32px;
+      padding: 2px 8px;
+      gap: 4px;
+      align-items: center;
+      justify-content: flex-start;
+      border-radius: 4px;
+      transition: 0.3s ease-in-out;
+      border-bottom: 1px solid transparent;
+      cursor: pointer;
+      width: 100%;
+
+      >span {
+          width: 16px;
+          height: 16px;
+      }
+      >img{
+        width: 16px;
+        height: 16px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      >p {
+          font-size: 12px;
+          letter-spacing: 0.2px;
+          color: var(--dark-grey);
+          font-weight: 400;
+          text-align: center;
+      }
+
+      &:hover {
+          background-color: var(--light-grey);
+      }
+
+      &.delete {
+          >p {
+              color: var(--red);
+          }
+
+          >span {
+              color: var(--red);
+          }
+
+          &:hover {
+              background-color: var(--light-red);
+          }
+      }
+
+      &.active {
+
+          >p,
+          >span {
+              color: var(--dark-green-1);
+            }
+            background-color: var(--light-green-1);
+
+          &:hover {
+              background-color: var(--light-green-1);
+          }
+      }
+
+  }
+}

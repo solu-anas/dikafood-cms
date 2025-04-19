@@ -1,0 +1,69 @@
+.card {
+    width: 100%;
+    height: fit-content;
+    border-radius: 8px;
+    border: 1px solid #E6E6E6;
+
+    >p {
+        font-size: 14px;
+        font-family: "Raleway";
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        padding: 0px 6px;
+        background-color: white;
+        color: #666;
+        width: fit-content;
+        transform: translate(9px, -9px);
+        text-transform: capitalize;
+    }
+
+    >.options{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        padding: 32px;
+        margin-top: -14px;
+        gap: 12px;
+        >.option{
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: "Raleway";
+            letter-spacing: 0.2px;
+            line-height: 120%;
+            color: #666;
+            cursor: pointer;
+            &.active{
+                font-weight: 600;
+                color: var(--dark-grey);
+                >div{
+                    background-color: white;
+                    border: 1px solid var(--dark-green-1);
+                    >span{
+                        background-color: var(--dark-green-1);
+                    }
+                }
+            }
+            >div{
+                width: 16px;
+                height: 16px;
+                min-width: 16px;
+                background-color: white;
+                border: 1px solid #E6E6E6;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                >span{
+                    width: 8px;
+                    height: 8px;
+                    min-width: 8px;
+                    background-color: #CCCCCC;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

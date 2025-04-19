@@ -1,0 +1,52 @@
+.toggle-mode {
+    width: 200px;
+    height: 40px;
+    padding: 4px;
+    border: 1px solid var(--light-grey);
+    border-radius: 8px;
+
+    >.options {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        position: relative;
+        transition: 0.2s linear;
+
+        >div {
+            width: 50%;
+            height: 100%;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            font-weight: 400;
+            color: var(--dark-grey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-transform: capitalize;
+
+            &.bg {
+                position: absolute;
+                width: 50%;
+                height: 100%;
+                border-radius: 4px;
+                background-color: var(--light-green-1);
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: 0.2s linear;
+
+                &.active {
+                    
+                    left: 50%;
+                    
+                }
+            }
+
+            &.active {
+                color: var(--dark-green-1);
+            }
+        }
+
+    }
+}

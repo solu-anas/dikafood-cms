@@ -1,0 +1,70 @@
+@import '../../../../assets/styles/index.scss';
+
+.login-page {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: white;
+
+  .login-overlay {
+    position: absolute;
+    z-index: 1;
+
+    &-1 {
+      width: 100%;
+      height: 40%;
+      left: 0;
+      top: 0;
+      background-color: color('light-green-1');
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    }
+
+    &-2 {
+      width: 80%;
+      height: 40%;
+      right: 0;
+      bottom: 0;
+      background-color: color('light-yellow-1');
+      clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  .login-container {
+    @include card($padding: 0, $border-radius: 16px, $shadow: true);
+    z-index: 2;
+    width: 90%;
+    max-width: 480px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    @include media-min('tablet') {
+      width: 480px;
+    }
+  }
+
+  .login-header {
+    @include flex-column(0.5rem, center, center);
+    background-color: color('dark-green-3');
+    padding: 2rem;
+    text-align: center;
+
+    .login-logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      color: white;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+}

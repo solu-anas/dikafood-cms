@@ -1,0 +1,89 @@
+[
+    {
+        "serialNumber" : 1,
+        "status" : "in transit",
+        "paymentStatus" : "paid",
+        "properties" : [
+            {
+                "property" : "Ordered Product units",
+                "value" : "5"
+            },
+            {
+                "property" : "Product Unit Price",
+                "value" : "$24"
+            },
+            {
+                "property" : "Product Total Price",
+                "value" : "$120"
+            }
+        ],
+        "details" : [
+            {
+                "property" : "Order at",
+                "value" : "Oct 21, 2024"
+            },
+            {
+                "property" : "Ordered by",
+                "value" : "John Doe"
+            }
+        ]
+    },
+    {
+        "serialNumber" : 2,
+        "status" : "in transit",
+        "paymentStatus" : "paid",
+        "properties" : [
+            {
+                "property" : "Ordered Product units",
+                "value" : "5"
+            },
+            {
+                "property" : "Product Unit Price",
+                "value" : "$24"
+            },
+            {
+                "property" : "Product Total Price",
+                "value" : "$120"
+            }
+        ],
+        "details" : [
+            {
+                "property" : "Order at",
+                "value" : "Oct 21, 2024"
+            },
+            {
+                "property" : "Ordered by",
+                "value" : "John Doe"
+            }
+        ]
+    },
+    {
+        "serialNumber" : 3,
+        "status" : "in transit",
+        "paymentStatus" : "paid",
+        "properties" : [
+            {
+                "property" : "Ordered Product units",
+                "value" : "5"
+            },
+            {
+                "property" : "Product Unit Price",
+                "value" : "$24"
+            },
+            {
+                "property" : "Product Total Price",
+                "value" : "$120"
+            }
+        ],
+        "details" : [
+            {
+                "property" : "Order at",
+                "value" : "Oct 21, 2024"
+            },
+            {
+                "property" : "Ordered by",
+                "value" : "John Doe"
+            }
+        ]
+    }
+]

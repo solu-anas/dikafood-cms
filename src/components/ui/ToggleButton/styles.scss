@@ -1,0 +1,27 @@
+.toggle-button{
+    height: 20px;
+    width: 32px;
+    border: 1px solid var(--light-grey-2);
+    padding: 0px 4px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: auto;
+    cursor: pointer;
+    >div{
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--grey);
+        align-self: flex-start;
+        transition: 0.2s linear;
+    }
+    &.active{
+        >div{
+            background-color: var(--dark-green-1);
+            align-self: flex-end;
+        }
+    }
+}

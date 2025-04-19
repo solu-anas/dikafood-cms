@@ -1,0 +1,59 @@
+.file {
+    display: flex;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--light-grey-2);
+    height: 32px;
+    width: 100%;
+    padding-left: 8px;
+
+    >.icons {
+        display: flex;
+        align-items: center;
+
+        >span {
+            width: 32px;
+            min-width: 32px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid var(--light-grey-2);
+            color: var(--dark-grey);
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                background-color: var(--light-grey);
+            }
+        }
+    }
+
+    >.file-name {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: space-between;
+
+        >p {
+            text-align: left;
+            font-size: 12px;
+            letter-spacing: 0.2px;
+            color: var(--dark-grey);
+            text-transform: capitalize;
+            width: 115px;
+            max-width: 80%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        >span {
+            font-size: 12px;
+            text-align: left;
+            letter-spacing: 0.2px;
+            color: #999;
+        }
+    }
+}

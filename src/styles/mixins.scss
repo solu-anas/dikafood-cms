@@ -1,0 +1,293 @@
+// Import variables to use in mixins
+@import './variables.scss';
+
+// Media query mixins
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint: #{$breakpoint}. Available breakpoints are: #{map-keys($breakpoints)}";
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint) - 1px}) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint: #{$breakpoint}. Available breakpoints are: #{map-keys($breakpoints)}";
+  }
+}
+
+// Flexbox mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Layout mixins
+@mixin container {
+  width: 100%;
+  max-width: $section-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+}
+
+@mixin card {
+  background-color: $bg-primary;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  padding: $card-padding;
+  transition: $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+// Button mixins
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $button-padding;
+  border-radius: $border-radius;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  cursor: pointer;
+  transition: $transition-base;
+  text-decoration: none;
+  line-height: 1;
+  border: none;
+  outline: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background-color: $brand-primary;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: darken($brand-primary, 5%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: darken($brand-primary, 10%);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background-color: $brand-secondary;
+  color: $brand-primary;
+
+  &:hover:not(:disabled) {
+    background-color: darken($brand-secondary, 5%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: darken($brand-secondary, 10%);
+  }
+}
+
+@mixin button-outline {
+  @include button-base;
+  background-color: transparent;
+  border: $border-width solid $brand-primary;
+  color: $brand-primary;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($brand-primary, 0.05);
+  }
+
+  &:active:not(:disabled) {
+    background-color: rgba($brand-primary, 0.1);
+  }
+}
+
+// Form control mixins
+@mixin form-control {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: color('text-primary');
+  background-color: white;
+  border: 1px solid color('border-color');
+  border-radius: $border-radius;
+  transition: $transition-base;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: color('light-grey');
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+// Typography mixins
+@mixin heading($size: '2xl') {
+  font-family: $font-family-heading;
+  font-size: font-size($size);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+
+@mixin body-text($size: 'base') {
+  font-family: $font-family-base;
+  font-size: font-size($size);
+  font-weight: $font-weight-regular;
+  line-height: $line-height-base;
+}
+
+// Animation mixins
+@mixin fade-in($duration: 0.3s, $delay: 0s) {
+  animation: fadeIn $duration ease-in-out $delay forwards;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@mixin slide-in($direction: 'up', $distance: 20px, $duration: 0.3s, $delay: 0s) {
+  $transform-start: '';
+
+  @if $direction == 'up' {
+    $transform-start: translateY($distance);
+  } @else if $direction == 'down' {
+    $transform-start: translateY(-$distance);
+  } @else if $direction == 'left' {
+    $transform-start: translateX($distance);
+  } @else if $direction == 'right' {
+    $transform-start: translateX(-$distance);
+  }
+
+  animation: slideIn $duration ease-out $delay forwards;
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: $transform-start;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) translateX(0);
+    }
+  }
+}
+
+// Images and media
+@mixin responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Truncate text
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Brand styles
+@mixin branded-section {
+  background-color: $bg-accent;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/patterns/leaf-pattern.svg');
+    background-repeat: repeat;
+    background-size: 200px;
+    opacity: 0.05;
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Accessibility
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $brand-primary;
+    outline-offset: 2px;
+  }
+}

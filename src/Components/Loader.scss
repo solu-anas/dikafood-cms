@@ -1,0 +1,78 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+
+  .loader {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+    animation: loader-rotate 1.5s linear infinite;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px color('dark-green-3') inset;
+    }
+
+    .loader-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      clip: rect(0, 60px, 60px, 30px);
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px color('dark-green-4') inset;
+        animation: loader-spin 1.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+      }
+
+      &::after {
+        animation-delay: -0.75s;
+      }
+    }
+  }
+}
+
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-spin {
+  0% {
+    clip: rect(0, 60px, 60px, 30px);
+  }
+  50% {
+    clip: rect(0, 60px, 60px, 0);
+  }
+  100% {
+    clip: rect(0, 60px, 60px, 30px);
+  }
+}
