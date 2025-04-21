@@ -11,6 +11,7 @@ import Filter from "../Components/Filter";
 import config from "../config";
 import { getOrders } from "../hooks/orders";
 import BurgerOptions from "../Components/BurgerOptions";
+import Tabs from "../Components/Tabs";
 
 export default function Orders() {
     const [orders, setOrders] = useState([])
@@ -446,7 +447,13 @@ export default function Orders() {
     console.log(orders.map((o) => o.isSelected))
 
     return (
-        <div className="orders">
+        <div className="orders-container">
+            <Tabs 
+                titles={[
+                    // ...your tab definitions here
+                ]} 
+                onRefresh={fetchAndSetOrders}
+            />
             {
                 orders.some(({ isOpen: { isOpenDetails } }) => isOpenDetails) &&
                 <div className="overlay">

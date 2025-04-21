@@ -1,52 +1,75 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
-  PiShoppingBag,
-  PiUsers,
-  PiTruck,
-  PiCreditCard,
-  PiStar,
-  PiHouse
+  PiShoppingBagDuotone,
+  PiUsersDuotone,
+  PiTruckDuotone,
+  PiCreditCardDuotone,
+  PiStarDuotone,
+  PiHouseDuotone,
+  PiSignOutDuotone,
+  PiUserCircleDuotone
 } from "react-icons/pi";
+import { Context } from "../../../App";
+import { mockAuthService } from "../../../services/mockAuth";
+import config from "../../../config";
 import "./styles.scss";
 
 const Sidebar = () => {
+  const { setIsAuthenticated } = useContext(Context);
+  const navigate = useNavigate();
+  
+  const handleLogout = () => {
+    console.log("Logging out...");
+    
+    if (config.USE_MOCK_AUTH) {
+      mockAuthService.logout();
+    } else {
+      // Real API logout would go here
+      localStorage.removeItem("token");
+    }
+    
+    setIsAuthenticated(false);
+    navigate("/login", { replace: true });
+  };
+
   const navItems = [
     {
       to: "/manage/orders",
       label: "Orders",
-      icon: <PiShoppingBag size={20} />
+      icon: <PiShoppingBagDuotone size={20} />
     },
     {
       to: "/manage/products",
       label: "Products",
-      icon: <PiHouse size={20} />
+      icon: <PiHouseDuotone size={20} />
     },
     {
       to: "/manage/customers",
       label: "Customers",
-      icon: <PiUsers size={20} />
+      icon: <PiUsersDuotone size={20} />
     },
     {
       to: "/manage/reviews",
       label: "Reviews",
-      icon: <PiStar size={20} />
+      icon: <PiStarDuotone size={20} />
     },
     {
       to: "/manage/delivery",
       label: "Delivery",
-      icon: <PiTruck size={20} />
+      icon: <PiTruckDuotone size={20} />
     },
     {
       to: "/manage/payment",
       label: "Payment",
-      icon: <PiCreditCard size={20} />
+      icon: <PiCreditCardDuotone size={20} />
     }
   ];
 
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <img src="/images/logo.png" alt="DikaFood Logo" className="sidebar-logo" />
+        <img src="/src/assets/dikafood-logo-main-3.svg" alt="DikaFood Logo" className="sidebar-logo" />
       </div>
 
       <nav className="sidebar-nav">
@@ -66,6 +89,22 @@ const Sidebar = () => {
           ))}
         </ul>
       </nav>
+      
+      <div className="sidebar-footer">
+        <div className="footer-buttons">
+          <NavLink
+            to="/manage/profile"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            <span className="nav-icon"><PiUserCircleDuotone size={20} /></span>
+          </NavLink>
+          <button onClick={handleLogout} className="logout-btn">
+            <span className="nav-icon"><PiSignOutDuotone size={20} /></span>
+          </button>
+        </div>
+      </div>
     </aside>
   );
 };

@@ -1,0 +1,118 @@
+@import '../../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/_mixins.scss';
+
+.customers-page {
+  padding: 0;
+  
+  .header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    
+    .search-container {
+      position: relative;
+      
+      .search-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $text-muted;
+      }
+      
+      .search-input {
+        width: 240px;
+        padding: 0.65rem 0.75rem 0.65rem 2.5rem;
+        border: 1px solid rgba(230, 195, 74, 0.4);
+        border-radius: $border-radius-round;
+        font-size: 0.9rem;
+        font-family: 'chillax', sans-serif;
+        background-color: rgba(255, 255, 255, 0.7);
+        
+        &:focus {
+          outline: none;
+          border-color: rgba(230, 195, 74, 0.7);
+          box-shadow: 0 0 0 3px rgba(230, 195, 74, 0.1);
+        }
+        
+        &::placeholder {
+          color: #aaaaaa;
+        }
+      }
+    }
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 2rem 0;
+    
+    p {
+      color: #7a6428;
+      margin-bottom: 1rem;
+      font-family: 'chillax', sans-serif;
+    }
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    
+    .customers-table {
+      width: 100%;
+      border-collapse: collapse;
+      
+      th, td {
+        padding: 1rem;
+        text-align: left;
+        font-family: 'chillax', sans-serif;
+      }
+      
+      th {
+        border-bottom: 1px solid rgba(230, 195, 74, 0.3);
+        font-weight: $font-weight-medium;
+        color: #5a4c2e;
+        font-size: 0.9rem;
+      }
+      
+      td {
+        border-bottom: 1px solid rgba(230, 195, 74, 0.2);
+        color: #7a6428;
+        font-size: 0.9rem;
+      }
+      
+      tr:last-child td {
+        border-bottom: none;
+      }
+      
+      .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: $border-radius-round;
+        font-size: 0.8rem;
+        font-weight: $font-weight-medium;
+        
+        &.status-active {
+          background-color: rgba(0, 180, 120, 0.1);
+          color: rgb(0, 180, 120);
+        }
+        
+        &.status-inactive {
+          background-color: rgba(180, 180, 180, 0.1);
+          color: rgb(120, 120, 120);
+        }
+      }
+    }
+  }
+  
+  .content-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .customer-count {
+      color: #7a6428;
+      font-size: 0.9rem;
+      font-family: 'chillax', sans-serif;
+    }
+  }
+} 

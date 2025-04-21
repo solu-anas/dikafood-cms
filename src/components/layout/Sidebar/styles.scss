@@ -2,26 +2,33 @@
 
 .sidebar {
   width: 260px;
-  background-color: white;
-  border-right: 1px solid color('border-color');
+  background-color: transparent;
+  border: 1px solid rgba(230, 195, 74, 0.5);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 3rem);
+  margin: 1.5rem 0 1.5rem 1.5rem;
   position: sticky;
   top: 0;
   z-index: 10;
+  overflow: hidden;
+  font-family: 'chillax', sans-serif;
+  box-shadow: 0 2px 8px rgba(230, 195, 74, 0.1);
 
   @include media-max('tablet') {
     width: 80px;
-    overflow: hidden;
   }
 
   .sidebar-header {
     padding: 1.5rem;
-    border-bottom: 1px solid color('border-color');
+    background: linear-gradient(to bottom right, rgba(255, 248, 220, 0.9), rgba(255, 251, 235, 0.9));
+    border-bottom: 1px solid rgba(230, 195, 74, 0.3);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 
     @include media-max('tablet') {
       padding: 1rem 0.5rem;
@@ -34,12 +41,34 @@
         height: 30px;
       }
     }
+    
+    .header-text {
+      text-align: center;
+      
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #5a4c2e;
+        margin: 0;
+      }
+      
+      p {
+        font-size: 0.8rem;
+        color: #7a6428;
+        margin: 0.2rem 0 0;
+      }
+      
+      @include media-max('tablet') {
+        display: none;
+      }
+    }
   }
 
   .sidebar-nav {
     flex: 1;
     padding: 1.5rem 0;
     overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.45);
 
     @include media-max('tablet') {
       padding: 1rem 0;
@@ -56,26 +85,50 @@
     .nav-link {
       display: flex;
       align-items: center;
-      padding: 0.75rem 1.5rem;
-      color: color('text-primary');
+      padding: 0.75rem 1rem;
+      color: #5a4c2e;
       border-radius: 0;
       transition: all 0.2s ease;
+      position: relative;
+      margin: 0 0.5rem;
+      border-radius: 6px;
 
       @include media-max('tablet') {
         padding: 0.75rem;
         justify-content: center;
+        margin: 0 0.25rem;
       }
 
       &:hover {
-        background-color: color('light-green-1');
-        color: color('dark-green-3');
+        background-color: rgba(248, 232, 160, 0.4);
+        color: #7a6428;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(230, 195, 74, 0.4);
       }
 
       &.active {
-        background-color: color('light-green-1');
-        color: color('dark-green-3');
-        border-right: 3px solid color('dark-green-3');
-        font-weight: 600;
+        background-color: rgba(248, 232, 160, 0.5);
+        color: #5a4c2e;
+        font-weight: 500;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 60%;
+          width: 3px;
+          background-color: #e6c34a;
+          border-radius: 0 3px 3px 0;
+        }
+        
+        .nav-icon {
+          color: #b19436;
+        }
       }
     }
 
@@ -84,6 +137,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: color 0.2s ease;
 
       @include media-max('tablet') {
         margin-right: 0;
@@ -91,8 +145,113 @@
     }
 
     .nav-label {
+      font-size: 0.95rem;
+      
       @include media-max('tablet') {
         display: none;
+      }
+    }
+  }
+  
+  .sidebar-footer {
+    background-color: rgba(255, 248, 220, 0.5);
+    border-top: 1px solid rgba(230, 195, 74, 0.2);
+    padding: 0.75rem 0.5rem;
+    
+    .footer-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+      border: 1px solid rgba(230, 195, 74, 0.3);
+      border-radius: 9999px;
+      overflow: hidden;
+      
+      .nav-link, 
+      .logout-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 0.5rem;
+        color: #5a4c2e;
+        transition: all 0.2s ease;
+        border-radius: 0;
+        position: relative;
+        
+        @include media-max('tablet') {
+          padding: 0.75rem;
+        }
+        
+        &:hover {
+          background-color: rgba(248, 232, 160, 0.4);
+        }
+        
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(230, 195, 74, 0.4);
+        }
+        
+        &.active {
+          background-color: rgba(248, 232, 160, 0.5);
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 3px;
+            background-color: #e6c34a;
+            border-radius: 0 3px 3px 0;
+          }
+        }
+      }
+      
+      .nav-link {
+        border-right: 1px solid rgba(230, 195, 74, 0.3);
+        
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 25%;
+          height: 50%;
+          width: 1px;
+          background-color: rgba(230, 195, 74, 0.3);
+        }
+      }
+      
+      .logout-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        
+        &:hover {
+          .nav-icon, .nav-label {
+            color: #d35050;
+          }
+        }
+      }
+      
+      .nav-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s ease;
+      }
+      
+      .nav-label {
+        display: none;
+      }
+      
+      @include media-min('desktop') {
+        .nav-label {
+          display: none;
+        }
       }
     }
   }

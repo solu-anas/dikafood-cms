@@ -64,4 +64,35 @@
       text-align: center;
     }
   }
+
+  .login-instructions {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 240, 0.5);
+    border-radius: 8px;
+    font-family: 'chillax', sans-serif;
+    border-top: 1px solid rgba(170, 204, 0, 0.2);
+    
+    h3 {
+      color: #666666;
+      font-size: 1rem;
+      margin: 0 0 0.75rem 0;
+      text-align: center;
+    }
+    
+    .account-row {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #888888;
+      
+      strong {
+        color: #666666;
+        margin-right: 0.5rem;
+      }
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
