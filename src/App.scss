@@ -176,8 +176,10 @@
 
 // Table styles
 .table-container {
+  height: 100%;
   width: 100%;
-  overflow-x: auto;
+  position: sticky;
+  // overflow-x: auto;
 
   table {
     width: 100%;

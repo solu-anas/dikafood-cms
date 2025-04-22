@@ -1,11 +1,11 @@
 import "./orders-page.scss"
 import Tabs from '../Components/Tabs'
 import { PiBank, PiChatText, PiClipboardText, PiGridFour, PiTruck, PiUserList } from 'react-icons/pi'
-import Orders from '../Sections/Orders'
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../App";
 import Loader from "../Components/Loader";
+import OrdersFeature from '../features/orders/pages/OrdersPage';
 
 export default function OrdersPage() {
   const { isAuthenticated, isChecked, isManager } = useContext(Context);
@@ -21,6 +21,7 @@ export default function OrdersPage() {
       navigate("/login")
     }
   }, [isChecked, isAuthenticated, navigate, isManager])
+  
   if (pageVisible) {
     const tabTitles = [
       {
@@ -38,7 +39,7 @@ export default function OrdersPage() {
     return (
       <div className='orders-page'>
         <Tabs titles={tabTitles} />
-        <Orders />
+        <OrdersFeature />
       </div>
     )
   }

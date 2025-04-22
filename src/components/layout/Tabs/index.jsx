@@ -1,15 +1,16 @@
 import "./styles.scss";
 import { useContext, useEffect, useState } from "react";
-import { PiArrowLeft, PiGearSix, PiGlobeSimple, PiPencilSimple, PiSignOut, PiUserCircle } from "react-icons/pi"
+import { PiArrowLeft, PiGearSix, PiGlobeSimple, PiPencilSimple, PiSignOut, PiUserCircle, PiArrowsClockwiseDuotone } from "react-icons/pi"
 import ToggleMode from "../../ui/ToggleMode";
 import config from "../../../config";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../../App"
 
-const Tabs = ({ titles }) => {
+const Tabs = ({ titles, onRefresh }) => {
     const [isActiveTab, setIsActiveTab] = useState("");
     const [isOpenSettings, setIsOpenSettings] = useState(false);
     const [isOpenProfile, setIsOpenProfile] = useState(false);
+    const [isRefreshing, setIsRefreshing] = useState(false);
     const { setIsAuthenticated } = useContext(Context);
     const navigate = useNavigate();
     const pathname = window.location.pathname;
@@ -32,6 +33,17 @@ const Tabs = ({ titles }) => {
         setIsOpenProfile(!isOpenProfile);
         setIsOpenSettings(false)
     }
+
+    const handleRefresh = () => {
+        if (onRefresh && typeof onRefresh === 'function') {
+            setIsRefreshing(true);
+            onRefresh().finally(() => {
+                setTimeout(() => {
+                    setIsRefreshing(false);
+                }, 1000);
+            });
+        }
+    };
 
     const onLogOut = async (e) => {
         e.preventDefault();
@@ -72,6 +84,21 @@ const Tabs = ({ titles }) => {
                                             {title.icon}
                                         </span>
                                         <p>{title.tabName}</p>
+                                        {title.link === isActiveTab && title.refreshable && (
+                                            <button 
+                                                className="tab-refresh-btn" 
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleRefresh();
+                                                }}
+                                                aria-label="Refresh data"
+                                            >
+                                                <PiArrowsClockwiseDuotone 
+                                                    size={16} 
+                                                    className={isRefreshing ? "rotating" : ""} 
+                                                />
+                                            </button>
+                                        )}
                                     </a>
                                 </div>
                             )

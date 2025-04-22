@@ -1,0 +1,112 @@
+@import "../../../../assets/styles/variables.scss";
+
+.filter-bar {
+  display: flex;
+  flex-direction: row;
+  // margin-bottom: 1rem;
+  // background-color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  
+  .filter-options {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(230, 195, 74, 0.15);
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(230, 195, 74, 0.3);
+      border-radius: 4px;
+    }
+  }
+
+  .filter-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    
+    &:hover {
+      background-color: rgba(230, 195, 74, 0.08);
+    }
+    
+    &.active {
+      background-color: rgba(230, 195, 74, 0.15);
+      
+      .filter-icon {
+        color: rgba(90, 70, 20, 0.9);
+      }
+      
+      .filter-label,
+      .filter-count {
+        color: rgba(90, 70, 20, 0.9);
+        font-weight: 600;
+      }
+    }
+    
+    .filter-icon {
+      font-size: 1.25rem;
+      margin-right: 0.5rem;
+      color: rgba(90, 70, 20, 0.6);
+      display: flex;
+      align-items: center;
+    }
+    
+    .filter-text {
+      display: flex;
+      flex-direction: column;
+      
+      .filter-label {
+        font-size: 0.85rem;
+        color: rgba(90, 70, 20, 0.8);
+      }
+      
+      .filter-count {
+        font-size: 0.75rem;
+        color: rgba(90, 70, 20, 0.6);
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0.5rem;
+    
+    .filter-options {
+      gap: 0.75rem;
+    }
+    
+    .filter-item {
+      padding: 0.4rem 0.6rem;
+      
+      .filter-icon {
+        font-size: 1.1rem;
+      }
+      
+      .filter-text {
+        .filter-label {
+          font-size: 0.75rem;
+        }
+        
+        .filter-count {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+} 

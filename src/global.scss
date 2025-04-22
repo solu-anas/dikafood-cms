@@ -101,7 +101,7 @@ img {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: spacer('6');
+  // margin-bottom: spacer('6');
 }
 
 th, td {
@@ -139,7 +139,7 @@ select {
   padding: $input-padding;
   border: $border-width solid $border-color;
   border-radius: $border-radius;
-  margin-bottom: spacer('4');
+  // margin-bottom: spacer('4');
   transition: $transition-base;
 
   &:focus {

@@ -10,15 +10,22 @@ import {
   PiArrowRightDuotone,
   PiArrowLeftDuotone,
   PiCheckCircleDuotone,
-  PiArrowsClockwiseDuotone
+  PiArrowsClockwiseDuotone,
+  PiClockDuotone,
+  PiCurrencyDollarDuotone,
+  PiTimerDuotone
 } from "react-icons/pi";
 import Button from "../../../../components/ui/Button";
 import "./styles.scss";
 import config from "../../../../config";
 import { FaSearch } from 'react-icons/fa';
 import { BiRefresh } from 'react-icons/bi';
+import OrdersTable from "../../components/OrdersTable";
+import OrdersHeader from "../../components/OrdersHeader";
+import OrdersFilter from "../../components/OrdersFilter";
+import Pagination from "../../components/Pagination";
 
-// Add this export so we can access it from the parent component
+// Add this export so we can access it from the parent component (Tabs)
 export function refreshOrders() {
   // This is a dummy function intended to be replaced with the actual fetchOrders function
   return Promise.resolve();
@@ -36,6 +43,7 @@ const OrdersPage = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const limit = 10;
   const [isLoading, setIsLoading] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   // Order status options
   const orderStatus = [
@@ -205,11 +213,11 @@ const OrdersPage = () => {
     }
 
     // Override the exported function with the actual implementation
-    refreshOrders = fetchOrders;
+    // This will allow the Tabs component to refresh the data when the refresh button is clicked
+    window.refreshOrders = fetchOrders;
     
     return new Promise((resolve) => {
       setTimeout(() => {
-        // ... your original setTimeout logic
         resolve();
       }, 800);
     });
@@ -219,6 +227,7 @@ const OrdersPage = () => {
   const handleStatusChange = (status) => {
     setCurrentStatus(status);
     setPage(1); // Reset to first page when changing filters
+    setIsOpenFilter(false); // Close the filter after selection
   };
   
   // Handle pagination
@@ -268,152 +277,105 @@ const OrdersPage = () => {
     }, 1000);
   };
 
+  // Handle view and edit order
+  const handleViewOrder = (orderId) => {
+    console.log(`Viewing order ${orderId}`);
+    // Implement view order functionality
+  };
+  
+  const handleEditOrder = (orderId) => {
+    console.log(`Editing order ${orderId}`);
+    // Implement edit order functionality
+  };
+
+  // Handle click outside to close filter
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Close filter if clicked outside
+      if (isOpenFilter && !event.target.closest('.filter-button') && !event.target.closest('.filter-modal')) {
+        setIsOpenFilter(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpenFilter]);
+
+  const statusCounts = {
+    all: orders.length,
+    ordered: orders.filter(order => order.status === 'pending').length,
+    packed: orders.filter(order => order.status === 'processing').length,
+    transit: orders.filter(order => order.status === 'shipping').length,
+    delivered: orders.filter(order => order.status === 'completed').length
+  };
+
   return (
-    <div className="orders-page">
+    <div className="orders-container">
       <div className="content-container">
         <div className="content-header">
-          <h1>Orders</h1>
-          <p>Manage and track all customer orders</p>
+          <h1 className="header-title">Orders</h1>
+          <div className="header-actions">
+            <div className="search-container">
+              <PiMagnifyingGlassDuotone className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search orders..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            <div className="filter-button-container">
+              <button
+                className={`filter-button ${isOpenFilter ? 'active' : ''}`}
+                onClick={() => toggleFilter()}
+              >
+                <PiFunnelDuotone />
+                Filter
+              </button>
+              {isOpenFilter && (
+                <div className="filter-container">
+                  <OrdersFilter 
+                    activeFilter={currentStatus} 
+                    onFilterChange={handleStatusChange} 
+                    statusCounts={statusCounts}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="content-body">
+          {orders.length === 0 ? (
+            <div className="empty-state">
+              <p>No orders found</p>
+              <Button
+                variant="primary"
+                size="md"
+                onClick={fetchOrders}
+              >
+                Refresh
+              </Button>
+            </div>
+          ) : (
+            <OrdersTable 
+              orders={orders}
+              onViewOrder={handleViewOrder}
+              onEditOrder={handleEditOrder}
+            />
+          )}
         </div>
         
-        <div className={`content-body ${isOpenFilter ? 'filter-active' : ''}`}>
-          {message && (
-            <div className="alert-message">
-              <PiCheckCircleDuotone size={18} />
-              <span>{message}</span>
-            </div>
-          )}
-          
-          <div className="header-actions">
-            <div className="search-and-actions">
-              <div className="search-container">
-                <FaSearch className="search-icon" />
-                <input
-                  type="text"
-                  placeholder="Search orders..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-              <div className="action-buttons">
-                <Button
-                  variant="secondary"
-                  icon={<PiFunnelDuotone size={18} />}
-                  onClick={toggleFilter}
-                >
-                  Filter
-                </Button>
-              </div>
-            </div>
-            
-            <div className="pagination">
-              <Button 
-                variant="outline" 
-                size="sm"
-                icon={<PiArrowLeftDuotone size={16} />}
-                onClick={handlePrevPage}
-                disabled={page === 1}
-              />
-              <span className="page-indicator">Page {page}</span>
-              <Button 
-                variant="outline" 
-                size="sm"
-                icon={<PiArrowRightDuotone size={16} />}
-                onClick={handleNextPage}
-                disabled={orders.length < limit}
-              />
-            </div>
-          </div>
-          
-          {isOpenFilter && (
-            <div className="filter-container">
-              <div className="status-filters">
-                {orderStatus.map((status) => (
-                  <Button
-                    key={status.status}
-                    variant={currentStatus === status.status ? "primary" : "outline"}
-                    size="sm"
-                    icon={status.icon}
-                    onClick={() => handleStatusChange(status.status)}
-                    className="filter-button"
-                  >
-                    {status.label}
-                    {ordersCounts[status.status] !== undefined && (
-                      <span className="count-badge">
-                        {ordersCounts[status.status]}
-                      </span>
-                    )}
-                  </Button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="table-content">
-            {orders.length === 0 ? (
-              <div className="empty-state">
-                <p>No orders found</p>
-                <Button
-                  variant="primary"
-                  size="md"
-                  onClick={fetchOrders}
-                >
-                  Refresh
-                </Button>
-              </div>
-            ) : (
-              <div className="table-container">
-                <table className="orders-table">
-                  <thead>
-                    <tr>
-                      <th>Order ID</th>
-                      <th>Customer</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Payment</th>
-                      <th>Total</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orders.map(order => (
-                      <tr key={order.id}>
-                        <td className="order-id">{order.id}</td>
-                        <td>
-                          <div className="customer-info">
-                            <span className="name">{order.customer}</span>
-                            <span className="email">{order.email}</span>
-                          </div>
-                        </td>
-                        <td>{order.date}</td>
-                        <td>
-                          <span className={`status-badge status-${order.status.toLowerCase()}`}>
-                            {order.status}
-                          </span>
-                        </td>
-                        <td>
-                          <span className={`payment-badge ${order.paymentStatus.toLowerCase() === 'paid' ? 'paid' : 'pending'}`}>
-                            {order.paymentStatus}
-                          </span>
-                        </td>
-                        <td>{order.total}</td>
-                        <td>
-                          <div className="action-buttons">
-                            <Button variant="text" size="sm">View</Button>
-                            <Button variant="text" size="sm">Edit</Button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-          
-          <div className="content-footer">
-            <span className="order-count">Total Orders: {ordersCounts.all || 0}</span>
-          </div>
+        <div className="content-footer">
+          <span className="order-count">Total Orders: {ordersCounts.all || 0}</span>
+          <Pagination 
+            currentPage={page}
+            onPrevPage={handlePrevPage}
+            onNextPage={handleNextPage}
+            isLastPage={orders.length < limit}
+          />
         </div>
       </div>
     </div>
