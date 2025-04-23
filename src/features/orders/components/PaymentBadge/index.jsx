@@ -1,16 +1,22 @@
 import { 
-  PiCurrencyDollarDuotone, 
-  PiTimerDuotone 
+  PiCoinDuotone, 
+  PiTimerDuotone,
+  PiWarningCircleDuotone
 } from "react-icons/pi";
 import PropTypes from 'prop-types';
 import './styles.scss';
 
 const PaymentBadge = ({ status }) => {
-  const isPaid = status.toLowerCase() === 'paid';
+  const statusLower = status.toLowerCase();
+  const isPaid = statusLower === 'paid';
+  const isPending = statusLower === 'pending';
+  const isUnpaid = statusLower === 'unpaid';
   
   return (
-    <span className={`payment-badge ${isPaid ? 'paid' : 'pending'}`}>
-      {isPaid ? <PiCurrencyDollarDuotone size={16} /> : <PiTimerDuotone size={16} />}
+    <span className={`payment-badge ${statusLower}`}>
+      {isPaid && <PiCoinDuotone size={16} />}
+      {isPending && <PiTimerDuotone size={16} />}
+      {isUnpaid && <PiWarningCircleDuotone size={16} />}
       {status}
     </span>
   );

@@ -1,0 +1,88 @@
+@import '../../../../styles/variables.scss';
+
+.confirmation-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.confirmation-modal {
+  background-color: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(230, 195, 74, 0.2);
+  
+  .confirmation-modal-content {
+    padding: 1.5rem;
+    background-color: rgba(255, 252, 245, 0.8);
+    
+    .confirmation-title {
+      font-family: $font-family-heading;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: rgb(110, 90, 40);
+      margin: 0 0 1rem 0;
+      text-align: center;
+    }
+    
+    .confirmation-message {
+      font-size: 1rem;
+      color: #7a6428;
+      margin: 0 0 1.5rem 0;
+      text-align: center;
+      line-height: 1.5;
+      font-family: 'Satoshi', sans-serif;
+    }
+    
+    .confirmation-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      
+      button {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        font-family: 'Satoshi', sans-serif;
+        
+        &.cancel-button {
+          background-color: rgba(248, 248, 248, 0.8);
+          color: rgba(90, 70, 20, 0.8);
+          border: 1px solid rgba(230, 230, 230, 0.8);
+          
+          &:hover {
+            background-color: rgba(230, 230, 230, 0.8);
+          }
+        }
+        
+        &.confirm-button {
+          background-color: rgba(76, 175, 80, 0.1);
+          color: rgba(76, 175, 80, 0.9);
+          border: 1px solid rgba(76, 175, 80, 0.2);
+          
+          &:hover {
+            background-color: rgba(76, 175, 80, 0.2);
+          }
+        }
+      }
+    }
+  }
+} 

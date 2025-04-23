@@ -8,6 +8,9 @@
   border-radius: $border-radius-round;
   font-size: 0.8rem;
   font-weight: $font-weight-medium;
+  min-width: 80px;
+  justify-content: center;
+  font-family: 'Satoshi', sans-serif;
   
   &.paid {
     background-color: rgba(0, 180, 120, 0.1);
@@ -17,5 +20,10 @@
   &.pending {
     background-color: rgba(255, 170, 10, 0.1);
     color: rgb(255, 170, 10);
+  }
+  
+  &.unpaid {
+    background-color: rgba(235, 87, 87, 0.1);
+    color: rgb(235, 87, 87);
   }
 } 

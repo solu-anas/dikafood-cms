@@ -1,0 +1,64 @@
+@import '../../../../styles/variables.scss';
+
+.payment-status-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  width: 180px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  
+  &-content {
+    padding: 12px;
+  }
+  
+  .payment-status-option {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+    
+    &:hover {
+      background-color: $gray-100;
+    }
+    
+    span {
+      margin-left: 10px;
+      font-size: 14px;
+      color: $text-primary;
+      font-family: 'Satoshi', sans-serif;
+    }
+  }
+  
+  .status-radio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $border-color;
+    border-radius: 50%;
+    
+    &.selected {
+      border-color: $brand-primary;
+      
+      .radio-inner {
+        width: 10px;
+        height: 10px;
+        background-color: $brand-primary;
+        border-radius: 50%;
+      }
+    }
+    
+    .radio-inner {
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+  }
+} 

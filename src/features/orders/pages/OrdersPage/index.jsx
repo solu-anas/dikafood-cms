@@ -12,14 +12,15 @@ import {
   PiCheckCircleDuotone,
   PiArrowsClockwiseDuotone,
   PiClockDuotone,
-  PiCurrencyDollarDuotone,
-  PiTimerDuotone
+  PiCoinDuotone,
+  PiTimerDuotone,
+  PiFunnelSimpleDuotone,
+  PiCaretUpDuotone,
+  PiCaretDownDuotone
 } from "react-icons/pi";
 import Button from "../../../../components/ui/Button";
 import "./styles.scss";
 import config from "../../../../config";
-import { FaSearch } from 'react-icons/fa';
-import { BiRefresh } from 'react-icons/bi';
 import OrdersTable from "../../components/OrdersTable";
 import OrdersHeader from "../../components/OrdersHeader";
 import OrdersFilter from "../../components/OrdersFilter";
@@ -40,10 +41,14 @@ const OrdersPage = () => {
   const [page, setPage] = useState(1);
   const [message, setMessage] = useState("");
   const [isOpenFilter, setIsOpenFilter] = useState(false);
+  const [isOpenPaymentFilter, setIsOpenPaymentFilter] = useState(false);
+  const [currentPaymentStatus, setCurrentPaymentStatus] = useState("all");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const limit = 10;
   const [isLoading, setIsLoading] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [sortField, setSortField] = useState('date');
+  const [sortDirection, setSortDirection] = useState('desc');
 
   // Order status options
   const orderStatus = [
@@ -63,7 +68,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 123-4567",
       date: "2023-06-15", 
       status: "Delivered", 
-      total: "$125.00",
+      total: "125.00",
       paymentStatus: "Paid"
     },
     { 
@@ -73,7 +78,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 987-6543",
       date: "2023-06-16", 
       status: "Processing", 
-      total: "$85.50",
+      total: "85.50",
       paymentStatus: "Pending"
     },
     { 
@@ -83,7 +88,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 456-7890",
       date: "2023-06-17", 
       status: "Pending", 
-      total: "$210.75",
+      total: "210.75",
       paymentStatus: "Pending"
     },
     { 
@@ -93,7 +98,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 234-5678",
       date: "2023-06-18", 
       status: "Delivered", 
-      total: "$95.20",
+      total: "95.20",
       paymentStatus: "Paid"
     },
     { 
@@ -103,7 +108,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 876-5432",
       date: "2023-06-19", 
       status: "Processing", 
-      total: "$150.75",
+      total: "150.75",
       paymentStatus: "Pending"
     },
     { 
@@ -113,7 +118,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 345-6789",
       date: "2023-06-20", 
       status: "Pending", 
-      total: "$78.50",
+      total: "78.50",
       paymentStatus: "Pending"
     },
     { 
@@ -123,7 +128,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 654-3210",
       date: "2023-06-21", 
       status: "Delivered", 
-      total: "$220.30",
+      total: "220.30",
       paymentStatus: "Paid"
     },
     { 
@@ -133,7 +138,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 765-4321",
       date: "2023-06-22", 
       status: "Processing", 
-      total: "$135.45",
+      total: "135.45",
       paymentStatus: "Paid"
     },
     { 
@@ -143,7 +148,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 567-8901",
       date: "2023-06-23", 
       status: "Pending", 
-      total: "$64.99",
+      total: "64.99",
       paymentStatus: "Pending"
     },
     { 
@@ -153,7 +158,7 @@ const OrdersPage = () => {
       phone: "+1 (555) 890-1234",
       date: "2023-06-24", 
       status: "Delivered", 
-      total: "$175.25",
+      total: "175.25",
       paymentStatus: "Paid"
     }
   ];
@@ -161,14 +166,6 @@ const OrdersPage = () => {
   // Load orders based on filters
   const fetchOrders = async () => {
     setIsRefreshing(true);
-    
-    // In a real app, this would be an API call with filters
-    // const params = new URLSearchParams();
-    // params.append('page', page);
-    // params.append('limit', limit);
-    // if (currentStatus !== 'all') {
-    //   params.append('status', currentStatus);
-    // }
     
     // Try-catch block for API call
     try {
@@ -182,6 +179,13 @@ const OrdersPage = () => {
           );
         }
         
+        // Filter by payment status if needed
+        if (currentPaymentStatus !== 'all') {
+          filteredOrders = filteredOrders.filter(order => 
+            order.paymentStatus.toLowerCase() === currentPaymentStatus.toLowerCase()
+          );
+        }
+        
         // Filter by search query if present
         if (searchQuery) {
           filteredOrders = filteredOrders.filter(order => 
@@ -190,7 +194,22 @@ const OrdersPage = () => {
           );
         }
         
-        setOrders(filteredOrders);
+        // Sort orders based on sort field and direction
+        const sortedOrders = [...filteredOrders].sort((a, b) => {
+          if (sortField === 'id') {
+            return sortDirection === 'asc' 
+              ? a.id.localeCompare(b.id, undefined, { numeric: true })
+              : b.id.localeCompare(a.id, undefined, { numeric: true });
+          } else if (sortField === 'date') {
+            // Assuming dates are strings in a format that can be directly compared
+            return sortDirection === 'asc'
+              ? new Date(a.date) - new Date(b.date)
+              : new Date(b.date) - new Date(a.date);
+          }
+          return 0;
+        });
+        
+        setOrders(sortedOrders);
         
         // Calculate counts
         const counts = {
@@ -230,6 +249,13 @@ const OrdersPage = () => {
     setIsOpenFilter(false); // Close the filter after selection
   };
   
+  // Handle payment status change
+  const handlePaymentStatusChange = (status) => {
+    setCurrentPaymentStatus(status);
+    setPage(1); // Reset to first page when changing filters
+    setIsOpenPaymentFilter(false); // Close the filter after selection
+  };
+  
   // Handle pagination
   const handleNextPage = () => {
     if (orders.length === limit) { // If we have a full page, there might be more
@@ -243,10 +269,22 @@ const OrdersPage = () => {
     }
   };
   
+  // Handle sort change
+  const handleSortChange = (field) => {
+    if (field === sortField) {
+      // Toggle direction if clicking the same field
+      setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+    } else {
+      // Set new field and default to descending
+      setSortField(field);
+      setSortDirection('desc');
+    }
+  };
+  
   // Load orders on mount and when filters change
   useEffect(() => {
     fetchOrders();
-  }, [page, currentStatus, searchQuery]);
+  }, [page, currentStatus, currentPaymentStatus, searchQuery, sortField, sortDirection]);
   
   // Handle order status change
   const handleChangeOrderStatus = (orderId, newStatus) => {
@@ -269,6 +307,11 @@ const OrdersPage = () => {
     setIsOpenFilter(prev => !prev);
   };
 
+  // Toggle payment filter panel
+  const togglePaymentFilter = () => {
+    setIsOpenPaymentFilter(prev => !prev);
+  };
+
   const handleRefresh = () => {
     setIsLoading(true);
     // Simulate refreshing data
@@ -288,12 +331,16 @@ const OrdersPage = () => {
     // Implement edit order functionality
   };
 
-  // Handle click outside to close filter
+  // Handle click outside to close filters
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Close filter if clicked outside
+      // Close filters if clicked outside
       if (isOpenFilter && !event.target.closest('.filter-button') && !event.target.closest('.filter-modal')) {
         setIsOpenFilter(false);
+      }
+      
+      if (isOpenPaymentFilter && !event.target.closest('.payment-filter-button') && !event.target.closest('.payment-filter-dropdown')) {
+        setIsOpenPaymentFilter(false);
       }
     };
     
@@ -301,14 +348,21 @@ const OrdersPage = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpenFilter]);
+  }, [isOpenFilter, isOpenPaymentFilter]);
 
   const statusCounts = {
     all: orders.length,
-    ordered: orders.filter(order => order.status === 'pending').length,
-    packed: orders.filter(order => order.status === 'processing').length,
-    transit: orders.filter(order => order.status === 'shipping').length,
-    delivered: orders.filter(order => order.status === 'completed').length
+    ordered: orders.filter(order => order.status.toLowerCase() === 'pending').length,
+    packed: orders.filter(order => order.status.toLowerCase() === 'processing').length,
+    transit: orders.filter(order => order.status.toLowerCase() === 'shipping').length,
+    delivered: orders.filter(order => order.status.toLowerCase() === 'delivered').length
+  };
+
+  const paymentCounts = {
+    all: orders.length,
+    paid: orders.filter(order => order.paymentStatus.toLowerCase() === 'paid').length,
+    unpaid: orders.filter(order => order.paymentStatus.toLowerCase() === 'unpaid').length,
+    pending: orders.filter(order => order.paymentStatus.toLowerCase() === 'pending').length
   };
 
   return (
@@ -364,6 +418,14 @@ const OrdersPage = () => {
               orders={orders}
               onViewOrder={handleViewOrder}
               onEditOrder={handleEditOrder}
+              isPaymentFilterOpen={isOpenPaymentFilter}
+              onTogglePaymentFilter={togglePaymentFilter}
+              currentPaymentStatus={currentPaymentStatus}
+              onPaymentStatusChange={handlePaymentStatusChange}
+              paymentCounts={paymentCounts}
+              sortField={sortField}
+              sortDirection={sortDirection}
+              onSortChange={handleSortChange}
             />
           )}
         </div>
