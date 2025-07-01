@@ -1,0 +1,994 @@
+/* Global styles for DikaFood CMS */
+
+/* Apply fonts globally */
+body {
+  font-family: var(--font-body) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings use the brand font */
+h1, h2, h3, h4, h5, h6,
+.ant-typography-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 600;
+}
+
+/* Brand elements use the brand font */
+.brand-text,
+.ant-layout-sider .ant-menu-title-content {
+  font-family: var(--font-brand) !important;
+}
+
+/* Ensure consistent font rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #525252;
+}
+
+/* Icon-Text Separators for all clickable items */
+/* Sidebar navigation items */
+.ant-menu-item .anticon + span,
+.ant-menu-submenu-title .anticon + span,
+.ant-menu-item-only-child .anticon + span {
+  position: relative;
+  margin-left: 12px !important;
+}
+
+.ant-menu-item .anticon + span::before,
+.ant-menu-submenu-title .anticon + span::before,
+.ant-menu-item-only-child .anticon + span::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 14px;
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 0.7;
+}
+
+/* Dropdown menu items - exclude Select options */
+.ant-dropdown-menu-item:not(.ant-select-item) .anticon + span,
+.ant-menu-item .anticon + span {
+  position: relative;
+  margin-left: 12px !important;
+}
+
+.ant-dropdown-menu-item:not(.ant-select-item) .anticon + span::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 0.7;
+}
+
+/* Button separators - for buttons with both icon and text */
+.ant-btn:not(.ant-btn-icon-only) .anticon + span,
+.ant-btn:not(.ant-btn-icon-only) .anticon + .ant-btn-loading-icon + span {
+  position: relative;
+  margin-left: 10px !important;
+}
+
+.ant-btn:not(.ant-btn-icon-only) .anticon + span::before,
+.ant-btn:not(.ant-btn-icon-only) .anticon + .ant-btn-loading-icon + span::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background-color: currentColor;
+  opacity: 0.2;
+}
+
+/* Special handling for primary buttons */
+.ant-btn-primary:not(.ant-btn-icon-only) .anticon + span::before {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Special handling for danger buttons */
+.ant-btn-dangerous:not(.ant-btn-icon-only) .anticon + span::before,
+.ant-btn[danger]:not(.ant-btn-icon-only) .anticon + span::before {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Table action buttons in grouped containers */
+.ant-btn-group .ant-btn:not(.ant-btn-icon-only) .anticon + span::before,
+.actions-container .ant-btn:not(.ant-btn-icon-only) .anticon + span::before {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Card action buttons */
+.ant-card-actions .ant-btn .anticon + span {
+  position: relative;
+  margin-left: 8px !important;
+}
+
+.ant-card-actions .ant-btn .anticon + span::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 10px;
+  background-color: currentColor;
+  opacity: 0.2;
+}
+
+/* Profile dropdown items */
+.ant-dropdown-menu .ant-dropdown-menu-item .anticon + span {
+  position: relative;
+  margin-left: 10px !important;
+}
+
+.ant-dropdown-menu .ant-dropdown-menu-item .anticon + span::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 0.7;
+}
+
+/* Breadcrumb separators */
+.ant-breadcrumb .anticon + span {
+  position: relative;
+  margin-left: 8px !important;
+}
+
+.ant-breadcrumb .anticon + span::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 10px;
+  background-color: currentColor;
+  opacity: 0.15;
+}
+
+/* Tab items with icons */
+.ant-tabs-tab .anticon + .ant-tabs-tab-btn {
+  position: relative;
+  margin-left: 8px !important;
+}
+
+.ant-tabs-tab .anticon + .ant-tabs-tab-btn::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background-color: currentColor;
+  opacity: 0.15;
+}
+
+/* Modal action buttons */
+.ant-modal-footer .ant-btn:not(.ant-btn-icon-only) .anticon + span::before {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Popconfirm and tooltip trigger buttons */
+.ant-popover-buttons .ant-btn:not(.ant-btn-icon-only) .anticon + span::before {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom class for enhanced separators */
+.icon-text-separator .anticon + span,
+.icon-text-separator .anticon + * {
+  position: relative;
+  margin-left: 10px !important;
+}
+
+.icon-text-separator .anticon + span::before,
+.icon-text-separator .anticon + *::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background-color: currentColor;
+  opacity: 0.2;
+}
+
+/* Ensure separators don't appear for icon-only buttons */
+.ant-btn-icon-only .anticon + span::before,
+.ant-btn-icon-only .anticon + *::before {
+  display: none !important;
+}
+
+/* Exclude Select dropdown options from separator rules */
+.ant-select-dropdown .ant-select-item .anticon + span::before,
+.ant-select-dropdown .ant-select-item .anticon + *::before,
+.ant-select-item .anticon + span::before,
+.ant-select-item .anticon + *::before {
+  display: none !important;
+}
+
+/* Fix Select option styling */
+.ant-select-item-option-content {
+  line-height: normal !important;
+}
+
+.ant-select-item-option-content div {
+  line-height: 1.4 !important;
+}
+
+/* Special handling for loading states */
+.ant-btn-loading .anticon + span {
+  margin-left: 8px !important;
+}
+
+.ant-btn-loading .anticon + span::before {
+  display: none !important;
+}
+
+.ant-btn-loading .ant-btn-loading-icon + span {
+  position: relative;
+  margin-left: 8px !important;
+}
+
+.ant-btn-loading .ant-btn-loading-icon + span::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 10px;
+  background-color: currentColor;
+  opacity: 0.2;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Universal text color improvements - Use soft off-white instead of sharp white */
+body,
+.ant-typography,
+.ant-typography p,
+.ant-typography div,
+.ant-typography span,
+.ant-table,
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td,
+.ant-descriptions-item-content,
+.ant-list-item-meta-title,
+.ant-list-item-meta-description,
+.ant-card-meta-title,
+.ant-card-meta-description,
+.ant-statistic-content-value,
+.ant-page-header-heading-title,
+.ant-page-header-content,
+.ant-breadcrumb a,
+.ant-breadcrumb span,
+.ant-tabs-tab-btn,
+.ant-menu-title-content,
+.ant-dropdown-menu-item,
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+}
+
+/* Secondary text elements */
+.ant-typography-caption,
+.ant-form-item-label > label,
+.ant-descriptions-item-label,
+.ant-table-thead > tr > th,
+.ant-statistic-title,
+.ant-page-header-heading-sub-title,
+.ant-breadcrumb-separator,
+.ant-tabs-tab:not(.ant-tabs-tab-active) .ant-tabs-tab-btn {
+  color: var(--text-secondary) !important;
+}
+
+/* Tertiary/muted text elements */
+.ant-typography-secondary,
+.ant-table-placeholder,
+.ant-empty-description,
+.ant-pagination-options-quick-jumper,
+.ant-select-selection-placeholder,
+.ant-input::placeholder,
+.ant-input-affix-wrapper input::placeholder {
+  color: var(--text-tertiary) !important;
+}
+
+/* Disabled text elements */
+.ant-typography-disabled,
+.ant-btn[disabled],
+.ant-btn-disabled,
+.ant-input[disabled],
+.ant-select-disabled,
+.ant-form-item-label > label.ant-form-item-required::before {
+  color: var(--text-disabled) !important;
+}
+
+/* Layout adjustments for fixed sidebar */
+.ant-layout {
+  background-color: transparent !important;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar specific styling */
+.ant-layout-sider {
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.ant-layout-content {
+  padding: 24px !important; /* Ensure consistent padding */
+  margin-left: 0 !important; /* Remove fixed margin */
+  background: #0f0f0f;
+  min-height: 100vh;
+  flex-grow: 1; /* Allow content to grow and fill space */
+  overflow-y: auto; /* Allow scrolling within the content area */
+}
+
+/* Main content area with sidebar offset - Updated for new sidebar width */
+.main-content {
+  margin-left: 240px;
+  transition: margin-left 0.2s ease;
+  min-height: 100vh;
+  background: #0f0f0f;
+  padding: 8px;
+}
+
+.main-content.collapsed {
+  margin-left: 70px;
+}
+
+/* Ensure content doesn't overlap with fixed sidebar */
+.ant-layout-has-sider > .ant-layout,
+.ant-layout-has-sider > .ant-layout-content {
+  margin-left: unset !important;
+}
+
+.ant-layout-has-sider.ant-layout-sider-collapsed > .ant-layout,
+.ant-layout-has-sider.ant-layout-sider-collapsed > .ant-layout-content {
+  margin-left: 70px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content,
+  .main-content.collapsed {
+    margin-left: 0 !important;
+  }
+  
+  .ant-layout-content {
+    margin-left: 0 !important;
+    padding: 8px;
+  }
+  
+  .ant-layout-has-sider > .ant-layout,
+  .ant-layout-has-sider > .ant-layout-content {
+    margin-left: 0 !important;
+  }
+  
+  /* Hide sidebar on mobile or make it overlay */
+  .ant-layout-sider {
+    position: fixed !important;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .ant-layout-sider.ant-layout-sider-collapsed {
+    transform: translateX(0);
+  }
+}
+
+/* Reduce card padding for tighter layout */
+.ant-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(170, 204, 0, 0.08);
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #303030;
+  padding: 12px 16px !important;
+}
+
+.ant-card-body {
+  padding: 12px 16px !important;
+}
+
+/* Refine List component padding reduction */
+.refine-list {
+  padding: 0 !important;
+}
+
+.refine-list .ant-card {
+  margin: 0 !important;
+}
+
+.refine-list .ant-card-body {
+  padding: 8px !important;
+}
+
+/* Table improvements with reduced spacing */
+.ant-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ant-table-thead > tr > th {
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-bottom: 1px solid #303030;
+  padding: 8px 12px !important;
+}
+
+.ant-table-tbody > tr > td {
+  padding: 8px 12px !important;
+}
+
+/* Reduce space around table wrapper */
+.ant-table-wrapper {
+  margin: 0 !important;
+  margin-top: 24px !important; /* Increase gap between header and table */
+}
+
+.ant-table-container {
+  border-radius: 8px;
+  overflow-x: hidden !important; /* Remove horizontal scrollbar */
+}
+
+/* Ensure table content fits properly without horizontal scroll */
+.ant-table-tbody > tr > td {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 200px !important;
+}
+
+/* Ensure table headers are properly sized */
+.ant-table-thead > tr > th {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Remove horizontal scroll from all table wrapper elements */
+.ant-table-wrapper .ant-spin-nested-loading,
+.ant-table-wrapper .ant-spin-container,
+.ant-table-wrapper .ant-table-container {
+  overflow-x: hidden !important;
+}
+
+/* Make table responsive and fit container width */
+.ant-table {
+  width: 100% !important;
+  table-layout: fixed !important;
+}
+
+/* Specific column width adjustments for better fit */
+.ant-table-thead > tr > th:first-child,
+.ant-table-tbody > tr > td:first-child {
+  width: 80px !important; /* ID column */
+  max-width: 80px !important;
+}
+
+.ant-table-thead > tr > th:nth-child(2),
+.ant-table-tbody > tr > td:nth-child(2) {
+  width: 120px !important; /* Brand column */
+  max-width: 120px !important;
+}
+
+.ant-table-thead > tr > th:nth-child(3),
+.ant-table-tbody > tr > td:nth-child(3) {
+  width: 130px !important; /* Category column */
+  max-width: 130px !important;
+}
+
+.ant-table-thead > tr > th:nth-child(4),
+.ant-table-tbody > tr > td:nth-child(4) {
+  width: auto !important; /* Description column - flexible */
+  max-width: 250px !important;
+}
+
+.ant-table-thead > tr > th:nth-child(5),
+.ant-table-tbody > tr > td:nth-child(5) {
+  width: 100px !important; /* Variants column */
+  max-width: 100px !important;
+}
+
+.ant-table-thead > tr > th:nth-child(6),
+.ant-table-tbody > tr > td:nth-child(6) {
+  width: 130px !important; /* Price Range column */
+  max-width: 130px !important;
+}
+
+.ant-table-thead > tr > th:nth-child(7),
+.ant-table-tbody > tr > td:nth-child(7) {
+  width: 90px !important; /* Status column */
+  max-width: 90px !important;
+}
+
+.ant-table-thead > tr > th:nth-child(8),
+.ant-table-tbody > tr > td:nth-child(8) {
+  width: 90px !important; /* Featured column */
+  max-width: 90px !important;
+}
+
+.ant-table-thead > tr > th:last-child,
+.ant-table-tbody > tr > td:last-child {
+  width: 120px !important; /* Actions column */
+  max-width: 120px !important;
+}
+
+/* Button improvements */
+.ant-btn {
+  font-family: var(--font-body);
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.ant-btn-primary {
+  box-shadow: 0 2px 8px rgba(170, 204, 0, 0.2);
+}
+
+/* Form improvements */
+.ant-form-item-label > label {
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.ant-input,
+.ant-select-selector,
+.ant-picker {
+  border-radius: 6px;
+  font-family: var(--font-body);
+}
+
+/* Menu improvements - Updated with correct Chillax font weights and separators */
+.ant-menu-item,
+.ant-menu-submenu-title {
+  font-family: var(--font-body);
+  font-weight: 200 !important; /* Chillax Extralight - lightest available */
+  color: var(--text-tertiary) !important;
+  margin: 4px 8px !important;
+  border-radius: 8px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-menu-item:hover,
+.ant-menu-submenu-title:hover {
+  background: rgba(170, 204, 0, 0.1) !important;
+  border-color: rgba(170, 204, 0, 0.2) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 300 !important; /* Chillax Light on hover */
+}
+
+.ant-menu-item-selected {
+  font-weight: 400 !important; /* Chillax Regular when selected */
+  background: rgba(170, 204, 0, 0.15) !important;
+  border-color: rgba(170, 204, 0, 0.3) !important;
+  color: var(--text-primary) !important;
+}
+
+.ant-menu-item-selected::after {
+  display: none !important; /* Remove the default selected indicator */
+}
+
+/* Menu icon styling with subtle separators */
+.ant-menu-item .anticon,
+.ant-menu-submenu-title .anticon {
+  color: var(--text-tertiary) !important;
+  font-size: 16px !important;
+  margin-right: 8px !important; /* Simple spacing */
+}
+
+/* Remove icon separators to prevent duplicates with component-level organization */
+.ant-menu-item .anticon,
+.ant-menu-submenu-title .anticon {
+  margin-right: 8px !important; /* Simple spacing instead of separator */
+}
+
+.ant-menu-item:hover .anticon,
+.ant-menu-submenu-title:hover .anticon,
+.ant-menu-item-selected .anticon {
+  color: var(--text-primary) !important;
+}
+
+/* Notification improvements */
+.ant-notification {
+  font-family: var(--font-body);
+}
+
+/* Message improvements */
+.ant-message {
+  font-family: var(--font-body);
+}
+
+/* Login page improvements */
+.ant-form {
+  font-family: var(--font-body);
+}
+
+.ant-form-item-label > label {
+  font-family: var(--font-body);
+}
+
+/* TagField improvements for better contrast */
+.ant-tag {
+  color: #000 !important; /* Dark text for better contrast with tag backgrounds */
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.ant-tag .anticon {
+  color: #000 !important; /* Dark icons for better contrast */
+}
+
+/* Statistic improvements */
+.ant-statistic {
+  font-family: var(--font-body);
+}
+
+.ant-statistic-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.ant-statistic-content {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+/* Login form input styling */
+.login-form .ant-form-item-label > label {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.login-form .ant-input-affix-wrapper {
+  padding-left: 12px !important;
+}
+
+.login-form .ant-input-affix-wrapper .ant-input {
+  padding-left: 0 !important;
+}
+
+.login-form .ant-input-password {
+  padding-left: 12px !important;
+}
+
+/* Input placeholder styling */
+.login-form .ant-input::placeholder,
+.login-form .ant-input-password input::placeholder {
+  color: var(--text-placeholder);
+  font-weight: 400;
+}
+
+/* Prefix icon styling */
+.login-form .ant-input-prefix {
+  color: var(--text-tertiary);
+}
+
+/* Input text color */
+.login-form .ant-input,
+.login-form .ant-input-password input {
+  color: var(--text-primary) !important;
+}
+
+/* Focus states for login inputs */
+.login-form .ant-input-affix-wrapper:focus,
+.login-form .ant-input-affix-wrapper-focused {
+  border-color: #AACC00;
+  box-shadow: 0 0 0 2px rgba(170, 204, 0, 0.2);
+}
+
+.login-form .ant-input-password:focus,
+.login-form .ant-input-password-focused {
+  border-color: #AACC00;
+  box-shadow: 0 0 0 2px rgba(170, 204, 0, 0.2);
+}
+
+/* Hover states */
+.login-form .ant-input-affix-wrapper:hover {
+  border-color: rgba(170, 204, 0, 0.7);
+}
+
+.login-form .ant-input-password:hover {
+  border-color: rgba(170, 204, 0, 0.7);
+}
+
+/* Sign-in button styling */
+.login-form .ant-btn-primary {
+  color: rgba(0, 0, 0, 0.75) !important;
+  font-weight: 500;
+}
+
+.login-form .ant-btn-primary:hover {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.login-form .ant-btn-primary:focus {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Navigation menu items styling - matching login form input text */
+.ant-menu-dark .ant-menu-item,
+.ant-menu-dark .ant-menu-submenu-title {
+  color: var(--text-tertiary) !important;
+  font-weight: 400;
+}
+
+.ant-menu-dark .ant-menu-item:hover,
+.ant-menu-dark .ant-menu-submenu-title:hover {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
+.ant-menu-dark .ant-menu-item:hover > span,
+.ant-menu-dark .ant-menu-item:hover > div,
+.ant-menu-dark .ant-menu-submenu-title:hover > span,
+.ant-menu-dark .ant-menu-submenu-title:hover > div {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
+.ant-menu-dark .ant-menu-item-selected > span,
+.ant-menu-dark .ant-menu-item-selected > div {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
+/* Navigation menu icons */
+.ant-menu-dark .ant-menu-item .anticon,
+.ant-menu-dark .ant-menu-submenu-title .anticon {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.ant-menu-dark .ant-menu-item:hover .anticon,
+.ant-menu-dark .ant-menu-submenu-title:hover .anticon,
+.ant-menu-dark .ant-menu-item-selected .anticon {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Menu divider styling for group separators */
+.ant-menu-divider {
+  background-color: rgba(170, 204, 0, 0.2) !important;
+  height: 1px !important;
+  margin: 12px 16px !important;
+}
+
+/* Additional padding reduction for Refine components */
+/* Target the main page wrapper that Refine creates */
+.refine-page-wrapper {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Reduce spacing in List header */
+.ant-page-header {
+  padding: 8px 0 !important;
+  margin-bottom: 8px !important;
+}
+
+.ant-page-header-heading {
+  padding: 0 !important;
+}
+
+/* Reduce space around Create button and page title */
+.ant-page-header-content {
+  padding-top: 4px !important;
+}
+
+/* Reduce pagination spacing */
+.ant-pagination {
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Tighter spacing for form layouts */
+.ant-form-item {
+  margin-bottom: 16px !important; /* Reduced from default 24px */
+}
+
+/* Reduce spacing in modal forms */
+.ant-modal-body .ant-form-item {
+  margin-bottom: 12px !important;
+}
+
+/* Tighter button groups */
+.ant-space-item {
+  margin-right: 6px !important;
+}
+
+/* Reduce gap in action button groups */
+.ant-btn-group > .ant-btn {
+  margin-right: 0 !important;
+}
+
+/* Compact breadcrumb spacing */
+.ant-breadcrumb {
+  margin-bottom: 8px !important;
+}
+
+/* Tighter spacing for statistics/metrics cards */
+.ant-statistic {
+  padding: 8px !important;
+}
+
+/* Reduce default margin on typography elements in tables */
+.ant-table .ant-typography {
+  margin-bottom: 0 !important;
+}
+
+/* Make descriptions more compact */
+.ant-descriptions-item-label,
+.ant-descriptions-item-content {
+  padding: 6px 12px !important;
+}
+
+/* Compact tabs */
+.ant-tabs-content-holder {
+  padding: 8px 0 !important;
+}
+
+.ant-tabs-tabpane {
+  padding: 8px 0 !important;
+}
+
+/* Remove excessive padding from page wrapper */
+.refine-page-wrapper,
+.ant-layout-content > div[style*="min-height: 360px"] {
+  padding: 8px !important; /* Reduced from 24px */
+  min-height: auto !important;
+}
+
+/* Improve page header to content spacing */
+.ant-page-header + .ant-table-wrapper,
+.ant-page-header + div > .ant-table-wrapper {
+  margin-top: 16px !important;
+}
+
+/* Reduce page header internal padding */
+.ant-page-header.ant-page-header-ghost {
+  padding: 8px 0 !important;
+}
+
+.ant-page-header-heading {
+  padding: 0 !important;
+}
+
+.ant-page-header-content {
+  padding: 0 !important;
+}
+
+/* Make table wrapper more compact */
+.ant-table-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove default spacing around refine components */
+.refine-list .ant-card,
+.refine-create .ant-card,
+.refine-edit .ant-card,
+.refine-show .ant-card {
+  margin: 0 !important;
+}
+
+/* Ensure list content has proper spacing */
+.refine-list .ant-page-header-content {
+  margin-top: 12px !important;
+}
+
+/* Target the specific wrapper div that has excessive padding */
+div[style*="min-height: 360px"][style*="padding: 24px"] {
+  padding: 8px !important;
+  min-height: auto !important;
+}
+
+/* Alternative selector for the main content wrapper */
+.ant-layout-content > div:first-child {
+  padding: 8px !important;
+  min-height: auto !important;
+}
+
+/* Improve text contrast on primary buttons with lime green background */
+.ant-btn-primary {
+  color: #2c2c2c !important; /* Dark grey text */
+  font-weight: 500 !important;
+}
+
+.ant-btn-primary:hover {
+  color: #1a1a1a !important; /* Darker grey on hover */
+}
+
+.ant-btn-primary:focus {
+  color: #2c2c2c !important; /* Maintain dark grey on focus */
+}
+
+/* Ensure Create button text is readable */
+.refine-create-button {
+  color: #2c2c2c !important;
+}
+
+.refine-create-button:hover {
+  color: #1a1a1a !important;
+}
+
+/* Custom Menu Styling - Remove Blue Backgrounds */
+.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-dark .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.ant-menu-dark .ant-menu-item:hover,
+.ant-menu-dark .ant-menu-submenu-title:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.ant-menu-dark .ant-menu-item-active,
+.ant-menu-dark .ant-menu-submenu-title-active {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Remove focus outlines */
+.ant-menu-dark .ant-menu-item:focus,
+.ant-menu-dark .ant-menu-submenu-title:focus {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Trash section specific styling */
+.ant-menu-dark .ant-menu-submenu[data-menu-id*="trash"] .ant-menu-item-selected {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+} 
