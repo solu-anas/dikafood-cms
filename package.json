@@ -41,6 +41,7 @@
   "scripts": {
     "dev": "refine dev",
     "build": "tsc && refine build",
+    "postbuild": "cp ./public/.htaccess ./dist/.htaccess",
     "start": "refine start",
     "refine": "refine"
   },
